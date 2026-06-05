@@ -21,7 +21,7 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 
-/* HEADER (UNCHANGED) */
+/* HEADER — CENTERED LOGO */
 
 header{
     width:92%;
@@ -30,13 +30,15 @@ header{
     padding:40px 0;
 
     display:flex;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
+    flex-direction:column;
+    gap:25px;
 }
 
 .logo{
-    width:350px;
-    max-width:70%;
+    width:320px;
+    max-width:80%;
 }
 
 nav{
@@ -77,7 +79,7 @@ nav a:hover{
     gap:10px;
 }
 
-/* VIDEO */
+/* VIDEO WRAP */
 
 .video{
     position:relative;
@@ -85,24 +87,32 @@ nav a:hover{
     overflow:hidden;
     cursor:pointer;
     background:#111;
+
+    transition:transform .35s ease, filter .35s ease;
 }
+
+/* IMAGE */
 
 .video img{
     position:absolute;
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:opacity .3s ease;
+
+    transition:transform .5s ease, opacity .5s ease;
 }
+
+/* IFRAME */
 
 .video iframe{
     position:absolute;
     width:100%;
     height:100%;
     border:none;
+
     opacity:0;
     pointer-events:none;
-    transition:opacity .3s ease;
+    transition:opacity .4s ease;
 }
 
 /* TITLE */
@@ -113,14 +123,28 @@ nav a:hover{
     opacity:.85;
 }
 
-/* HOVER PLAY */
+/* ===== NETFLIX HOVER EFFECT ===== */
+
+.card:hover .video{
+    transform:scale(1.08);
+    z-index:2;
+    filter:brightness(0.65);
+}
+
+.card:hover img{
+    transform:scale(1.1);
+    opacity:0.9;
+}
 
 .card:hover iframe{
     opacity:1;
 }
 
-.card:hover img{
-    opacity:0;
+/* optional slight global dim effect */
+
+.grid:hover .card:not(:hover){
+    opacity:0.4;
+    transform:scale(0.98);
 }
 
 /* MOBILE */
@@ -128,12 +152,11 @@ nav a:hover{
 @media(max-width:768px){
 
     header{
-        flex-direction:column;
-        gap:25px;
+        gap:20px;
     }
 
     .logo{
-        width:280px;
+        width:260px;
     }
 
     nav{
@@ -217,15 +240,13 @@ function createCard(id){
 
     const iframe = video.querySelector("iframe");
 
-    /* VIMEO OEMBED (THUMB + TITLE AUTO) */
+    /* VIMEO OEMBED → TITLE + THUMB */
     fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`)
         .then(r => r.json())
         .then(data => {
 
-            // TITLE from Vimeo
             title.innerText = data.title;
 
-            // THUMB FIX
             let thumb = data.thumbnail_url;
             thumb = thumb.replace("_200x150", "_640");
 
@@ -236,7 +257,7 @@ function createCard(id){
             title.innerText = "Untitled";
         });
 
-    /* HOVER PLAY (MUTED) */
+    /* HOVER → PLAY MUTED */
     video.addEventListener("mouseenter", () => {
 
         iframe.contentWindow.postMessage(
@@ -246,7 +267,7 @@ function createCard(id){
 
     });
 
-    /* LEAVE STOP + RESET */
+    /* LEAVE → PAUSE + RESET */
     video.addEventListener("mouseleave", () => {
 
         iframe.contentWindow.postMessage(
@@ -261,7 +282,7 @@ function createCard(id){
 
     });
 
-    /* CLICK → SOUND ON + START */
+    /* CLICK → SOUND ON + RESTART */
     video.addEventListener("click", () => {
 
         iframe.src =
