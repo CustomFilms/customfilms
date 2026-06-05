@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;title&gt;Custom Films&lt;/title&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">*{</p>
+<p class="p1">margin:0;</p>
+<p class="p1">padding:0;</p>
+<p class="p1">box-sizing:border-box;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">body{</p>
+<p class="p1">background:#000;</p>
+<p class="p1">color:#fff;</p>
+<p class="p1">font-family:Arial, Helvetica, sans-serif;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">header{</p>
+<p class="p1">padding:50px 20px 30px;</p>
+<p class="p1">text-align:center;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">.logo{</p>
+<p class="p1">width:500px;</p>
+<p class="p1">max-width:90%;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">nav{</p>
+<p class="p1">margin-top:30px;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">nav a{</p>
+<p class="p1">color:white;</p>
+<p class="p1">text-decoration:none;</p>
+<p class="p1">margin:0 25px;</p>
+<p class="p1">letter-spacing:3px;</p>
+<p class="p1">font-size:13px;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">nav a:hover{</p>
+<p class="p1">opacity:.6;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">.grid{</p>
+<p class="p1">width:92%;</p>
+<p class="p1">max-width:1800px;</p>
+<p class="p1">margin:auto;</p>
+<p class="p1">padding-bottom:80px;</p>
+<p class="p2"><br></p>
+<p class="p1">display:grid;</p>
+<p class="p1">grid-template-columns:repeat(auto-fit,minmax(420px,1fr));</p>
+<p class="p1">gap:25px;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">.video{</p>
+<p class="p1">position:relative;</p>
+<p class="p1">overflow:hidden;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">.video iframe{</p>
+<p class="p1">width:100%;</p>
+<p class="p1">aspect-ratio:16/9;</p>
+<p class="p1">border:none;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">.overlay{</p>
+<p class="p1">position:absolute;</p>
+<p class="p1">bottom:0;</p>
+<p class="p1">left:0;</p>
+<p class="p1">right:0;</p>
+<p class="p1">padding:20px;</p>
+<p class="p2"><br></p>
+<p class="p1">background:linear-gradient(</p>
+<p class="p1">transparent,</p>
+<p class="p1">rgba(0,0,0,.9)</p>
+<p class="p1">);</p>
+<p class="p2"><br></p>
+<p class="p1">font-size:14px;</p>
+<p class="p1">letter-spacing:2px;</p>
+<p class="p1">opacity:0;</p>
+<p class="p1">transition:.3s;</p>
+<p class="p1">pointer-events:none;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">.video:hover .overlay{</p>
+<p class="p1">opacity:1;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">footer{</p>
+<p class="p1">text-align:center;</p>
+<p class="p1">padding:50px;</p>
+<p class="p1">font-size:12px;</p>
+<p class="p1">color:#777;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">@media(max-width:600px){</p>
+<p class="p1">.grid{</p>
+<p class="p1">grid-template-columns:1fr;</p>
+<p class="p1">}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;img src="logo.png" class="logo" alt="Custom Films"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;nav&gt;</p>
+<p class="p1">&lt;a href="index.html"&gt;FILMS&lt;/a&gt;</p>
+<p class="p1">&lt;a href="about.html"&gt;ABOUT&lt;/a&gt;</p>
+<p class="p1">&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="grid"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/875134288" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;CUSTOM FILMS SHOWREEL&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/1050757865" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;REICHLE &amp; DE-MASSARI&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/875132136" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;ICELAND&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/482721100" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;MERCEDES&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/476001858" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;TILABRAS FISH FARM&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/875542319" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;MYGYM&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/637911167" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;NORTH TENERIFE&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/644845266" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;WEBSTAGE MASTERS&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/287788355" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;PRODUCT FILM&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/800771439" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;KOH SAMUI&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/652153530" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;SIGNODE&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/829526792" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;MYGYM PROMO&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/348184376" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;GREEN EIGHT CAPITAL&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="video"&gt;</p>
+<p class="p1">&lt;iframe src="https://player.vimeo.com/video/345945132" allowfullscreen&gt;&lt;/iframe&gt;</p>
+<p class="p1">&lt;div class="overlay"&gt;PAVILLON LE CORBUSIER&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;footer&gt;</p>
+<p class="p1">© Custom Films</p>
+<p class="p1">&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
