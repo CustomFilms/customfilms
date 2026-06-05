@@ -10,74 +10,135 @@
 
 <style>
 
-body{
-background:black;
-color:white;
-font-family:Arial, Helvetica, sans-serif;
-margin:0;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
+body{
+    background:black;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* HEADER (SAME STYLE AS HOME) */
+
 header{
-text-align:center;
-padding:50px 20px;
+    width:92%;
+    max-width:1800px;
+    margin:auto;
+    padding:40px 0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:25px;
 }
 
 .logo{
-width:500px;
-max-width:90%;
+    width:320px;
+    max-width:80%;
 }
 
 nav{
-margin-top:30px;
+    display:flex;
+    gap:40px;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-margin:0 25px;
-letter-spacing:3px;
-font-size:13px;
+    color:white;
+    text-decoration:none;
+    letter-spacing:3px;
+    font-size:13px;
+    transition:.3s;
 }
+
+nav a:hover{
+    opacity:.6;
+}
+
+/* LAYOUT */
 
 .container{
-max-width:1200px;
-margin:auto;
-padding:50px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+
+    padding:60px 0;
 }
+
+/* PROFILE IMAGE */
 
 .profile{
-width:100%;
+    width:100%;
+    max-width:420px;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:50%;
+    margin:auto;
+    display:block;
 }
 
-.quote{
-font-style:italic;
-line-height:1.8;
-margin-bottom:40px;
-}
+/* TEXT */
 
-.text{
-line-height:1.9;
-color:#d0d0d0;
+h1{
+    font-size:28px;
+    margin-bottom:25px;
+    letter-spacing:1px;
 }
 
 .contact{
-margin-bottom:40px;
-line-height:1.8;
+    line-height:1.8;
+    margin-bottom:30px;
+    color:#ccc;
 }
 
-a{
-color:white;
+.quote{
+    font-style:italic;
+    line-height:1.8;
+    margin-bottom:30px;
+    color:#bbb;
 }
+
+.text p{
+    line-height:1.9;
+    color:#ddd;
+    margin-bottom:18px;
+}
+
+/* LINKS */
+
+a{
+    color:white;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:50px;
+    font-size:12px;
+    color:#777;
+}
+
+/* RESPONSIVE */
 
 @media(max-width:900px){
 
-.container{
-grid-template-columns:1fr;
-padding:30px;
-}
+    .container{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .profile{
+        max-width:300px;
+    }
 
 }
 
@@ -89,98 +150,68 @@ padding:30px;
 
 <header>
 
-<img src="logo.png" class="logo" alt="Custom Films">
+    <img src="logo.png" class="logo" alt="Custom Films">
 
-<nav>
-<a href="index.html">FILMS</a>
-<a href="about.html">ABOUT</a>
-</nav>
+    <nav>
+        <a href="index.html">FILMS</a>
+        <a href="about.html">ABOUT</a>
+    </nav>
 
 </header>
 
 <div class="container">
 
-<div>
-<img src="marco.jpg" class="profile" alt="Marco Sahli">
-</div>
+    <div>
+        <img src="marco.jpg" class="profile" alt="Marco Sahli">
+    </div>
 
-<div>
+    <div>
 
-<h1>Marco Sahli</h1>
+        <h1>Marco Sahli</h1>
 
-<div class="contact">
+        <div class="contact">
+            Florastrasse 18<br>
+            8008 Zurich<br><br>
 
-Florastrasse 18<br>
-8008 Zurich<br><br>
+            Email:
+            <a href="mailto:info@customfilms.ch">info@customfilms.ch</a>
 
-Email:
-<a href="mailto:info@customfilms.ch">
-info@customfilms.ch
-</a>
+            <br><br>
 
-<br><br>
+            Tel:
+            <a href="tel:+41763422307">+41 (0) 76 342 23 07</a>
+        </div>
 
-Tel:
-<a href="tel:+41763422307">
-+41 (0) 76 342 23 07
-</a>
+        <div class="quote">
+            "The spirit of structure can't be foreseen,<br><br>
+            For somewhere between<br>
+            The architecture and the dream<br><br>
+            More than the sum of its parts<br><br>
+            Somehow, somewhere, the heart."<br><br>
+            — Lemn Sissay
+        </div>
 
-</div>
+        <div class="text">
 
-<div class="quote">
+            <p>Films are meant to leave long-lasting impressions.</p>
 
-"The spirit of structure can't be foreseen,
+            <p>This is achieved through attractive shots, smooth cuts, and inspiring music.</p>
 
-For somewhere between
+            <p>When these elements come together, a film is created that touches people. This is my passion.</p>
 
-The architecture and the dream
+            <p>I would be happy to assist you in bringing your film project to life.</p>
 
-More than the sum of its parts
+            <p>I look forward to a creative and successful collaboration.</p>
 
-Somehow, somewhere, the heart."
+        </div>
 
-<br><br>
-
-— Lemn Sissay
-
-</div>
-
-<div class="text">
-
-<p>Films are meant to leave long-lasting impressions.</p>
-
-<br>
-
-<p>
-This is achieved through attractive shots, smooth cuts,
-and inspiring music.
-</p>
-
-<br>
-
-<p>
-When these elements come together, a film is created
-that touches people. This is my passion.
-</p>
-
-<br>
-
-<p>
-I would be happy to assist you in bringing your film project to life.
-</p>
-
-<br>
-
-<p>
-I look forward to a creative and successful collaboration.
-</p>
+    </div>
 
 </div>
 
-</div>
-
-</div>
+<footer>
+© Custom Films
+</footer>
 
 </body>
-
 </html>
