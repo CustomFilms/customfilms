@@ -22,7 +22,7 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 
-/* HEADER (SAME STYLE AS HOME) */
+/* HEADER */
 
 header{
     width:92%;
@@ -73,16 +73,42 @@ nav a:hover{
     padding:60px 0;
 }
 
-/* PROFILE IMAGE */
+/* IMAGE WRAPPER */
+
+.image-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+/* PROFILE IMAGE (ZOOMED + CROP) */
 
 .profile{
     width:100%;
     max-width:420px;
     aspect-ratio:1/1;
-    object-fit:cover;
     border-radius:50%;
-    margin:auto;
-    display:block;
+    object-fit:cover;
+    transform:scale(1.25); /* <-- zoom INS bild */
+}
+
+/* CONTACT UNDER IMAGE */
+
+.contact-under{
+    text-align:center;
+    line-height:1.8;
+    color:#ccc;
+    font-size:14px;
+}
+
+.contact-under a{
+    color:white;
+    text-decoration:none;
+}
+
+.contact-under a:hover{
+    opacity:.7;
 }
 
 /* TEXT */
@@ -94,9 +120,7 @@ h1{
 }
 
 .contact{
-    line-height:1.8;
-    margin-bottom:30px;
-    color:#ccc;
+    display:none; /* alte Kontaktbox deaktiviert */
 }
 
 .quote{
@@ -110,12 +134,6 @@ h1{
     line-height:1.9;
     color:#ddd;
     margin-bottom:18px;
-}
-
-/* LINKS */
-
-a{
-    color:white;
 }
 
 /* FOOTER */
@@ -138,6 +156,7 @@ footer{
 
     .profile{
         max-width:300px;
+        transform:scale(1.15);
     }
 
 }
@@ -161,26 +180,30 @@ footer{
 
 <div class="container">
 
-    <div>
+    <!-- LEFT IMAGE SIDE -->
+    <div class="image-wrap">
+
         <img src="marco.jpg" class="profile" alt="Marco Sahli">
+
+        <div class="contact-under">
+            <strong>Marco Sahli</strong><br><br>
+
+            Florastrasse 18<br>
+            8008 Zürich<br><br>
+
+            Email:<br>
+            <a href="mailto:info@customfilms.ch">info@customfilms.ch</a><br><br>
+
+            Telefon:<br>
+            <a href="tel:+41763422307">+41 76 342 23 07</a>
+        </div>
+
     </div>
 
+    <!-- RIGHT TEXT SIDE -->
     <div>
 
         <h1>Marco Sahli</h1>
-
-        <div class="contact">
-            Florastrasse 18<br>
-            8008 Zurich<br><br>
-
-            Email:
-            <a href="mailto:info@customfilms.ch">info@customfilms.ch</a>
-
-            <br><br>
-
-            Tel:
-            <a href="tel:+41763422307">+41 (0) 76 342 23 07</a>
-        </div>
 
         <div class="quote">
             "The spirit of structure can't be foreseen,<br><br>
@@ -194,13 +217,9 @@ footer{
         <div class="text">
 
             <p>Films are meant to leave long-lasting impressions.</p>
-
             <p>This is achieved through attractive shots, smooth cuts, and inspiring music.</p>
-
             <p>When these elements come together, a film is created that touches people. This is my passion.</p>
-
             <p>I would be happy to assist you in bringing your film project to life.</p>
-
             <p>I look forward to a creative and successful collaboration.</p>
 
         </div>
