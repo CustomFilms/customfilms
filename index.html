@@ -77,7 +77,7 @@ nav a:hover{
     gap:10px;
 }
 
-/* VIDEO WRAP */
+/* VIDEO */
 
 .video{
     position:relative;
@@ -87,8 +87,6 @@ nav a:hover{
     background:#111;
 }
 
-/* THUMB */
-
 .video img{
     position:absolute;
     width:100%;
@@ -96,8 +94,6 @@ nav a:hover{
     object-fit:cover;
     transition:opacity .3s ease;
 }
-
-/* IFRAME */
 
 .video iframe{
     position:absolute;
@@ -109,15 +105,15 @@ nav a:hover{
     transition:opacity .3s ease;
 }
 
-/* TITLE BELOW */
+/* TITLE */
 
 .title{
     font-size:13px;
     letter-spacing:2px;
-    opacity:.8;
+    opacity:.85;
 }
 
-/* HOVER STATE */
+/* HOVER PLAY */
 
 .card:hover iframe{
     opacity:1;
@@ -176,25 +172,25 @@ nav a:hover{
 <script>
 
 const films = [
-    {id:"875134288", title:"SHOWREEL"},
-    {id:"1050757865", title:"REICHLE & DE-MASSARI"},
-    {id:"875132136", title:"ICELAND"},
-    {id:"482721100", title:"MERCEDES"},
-    {id:"476001858", title:"TILABRAS FISH FARM"},
-    {id:"875542319", title:"MYGYM"},
-    {id:"637911167", title:"NORTH TENERIFE"},
-    {id:"644845266", title:"WEBSTAGE MASTERS"},
-    {id:"287788355", title:"PRODUCT FILM"},
-    {id:"800771439", title:"KOH SAMUI"},
-    {id:"652153530", title:"SIGNODE"},
-    {id:"829526792", title:"MYGYM PROMO"},
-    {id:"348184376", title:"GREEN EIGHT CAPITAL"},
-    {id:"345945132", title:"PAVILLON LE CORBUSIER"}
+    "875134288",
+    "1050757865",
+    "875132136",
+    "482721100",
+    "476001858",
+    "875542319",
+    "637911167",
+    "644845266",
+    "287788355",
+    "800771439",
+    "652153530",
+    "829526792",
+    "348184376",
+    "345945132"
 ];
 
 const grid = document.getElementById("grid");
 
-function createCard(film){
+function createCard(id){
 
     const card = document.createElement("div");
     card.className = "card";
@@ -203,16 +199,16 @@ function createCard(film){
     video.className = "video";
 
     video.innerHTML = `
-        <img alt="${film.title}">
+        <img alt="">
         <iframe
-            src="https://player.vimeo.com/video/${film.id}?muted=1&autoplay=0&loop=1&background=1"
+            src="https://player.vimeo.com/video/${id}?muted=1&autoplay=0&loop=1&background=1"
             allow="autoplay; fullscreen"
         ></iframe>
     `;
 
     const title = document.createElement("div");
     title.className = "title";
-    title.innerText = film.title;
+    title.innerText = "Loading...";
 
     card.appendChild(video);
     card.appendChild(title);
@@ -221,19 +217,26 @@ function createCard(film){
 
     const iframe = video.querySelector("iframe");
 
-    /* THUMBNAIL FIX (VIMEO OEMBED) */
-    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${film.id}`)
+    /* VIMEO OEMBED (THUMB + TITLE AUTO) */
+    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`)
         .then(r => r.json())
         .then(data => {
 
+            // TITLE from Vimeo
+            title.innerText = data.title;
+
+            // THUMB FIX
             let thumb = data.thumbnail_url;
             thumb = thumb.replace("_200x150", "_640");
 
             video.querySelector("img").src = thumb;
 
+        })
+        .catch(() => {
+            title.innerText = "Untitled";
         });
 
-    /* HOVER = PLAY MUTED */
+    /* HOVER PLAY (MUTED) */
     video.addEventListener("mouseenter", () => {
 
         iframe.contentWindow.postMessage(
@@ -243,7 +246,7 @@ function createCard(film){
 
     });
 
-    /* LEAVE = PAUSE + RESET */
+    /* LEAVE STOP + RESET */
     video.addEventListener("mouseleave", () => {
 
         iframe.contentWindow.postMessage(
@@ -258,11 +261,11 @@ function createCard(film){
 
     });
 
-    /* CLICK = PLAY WITH SOUND FROM START */
+    /* CLICK → SOUND ON + START */
     video.addEventListener("click", () => {
 
         iframe.src =
-            `https://player.vimeo.com/video/${film.id}?autoplay=1&muted=0&background=0`;
+            `https://player.vimeo.com/video/${id}?autoplay=1&muted=0&background=0`;
 
     });
 
