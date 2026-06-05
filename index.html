@@ -30,15 +30,13 @@ header{
     padding:40px 0;
 
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
-    flex-direction:column;
-    gap:25px;
 }
 
 .logo{
-    width:320px;
-    max-width:80%;
+    width:350px;
+    max-width:70%;
 }
 
 nav{
@@ -51,6 +49,25 @@ nav a{
     text-decoration:none;
     letter-spacing:3px;
     font-size:13px;
+    transition:.3s;
+}
+
+nav a:hover{
+    opacity:.6;
+}
+
+/* PLAYER */
+
+#player-container{
+    width:92%;
+    max-width:1800px;
+    margin:0 auto 30px;
+}
+
+#mainPlayer{
+    width:100%;
+    aspect-ratio:16/9;
+    border:none;
 }
 
 /* GRID */
@@ -62,59 +79,52 @@ nav a{
     padding-bottom:80px;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
     gap:25px;
-}
-
-/* CARD */
-
-.card{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
 }
 
 .video{
     position:relative;
-    aspect-ratio:16/9;
     overflow:hidden;
     cursor:pointer;
     background:#111;
 }
 
 .video img{
-    position:absolute;
     width:100%;
-    height:100%;
+    aspect-ratio:16/9;
     object-fit:cover;
+    display:block;
+    transition:transform .4s ease;
 }
 
-.video iframe{
+.video:hover img{
+    transform:scale(1.03);
+}
+
+.overlay{
     position:absolute;
-    width:100%;
-    height:100%;
-    border:none;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    padding:30px;
+
+    background:rgba(0,0,0,.75);
 
     opacity:0;
-    pointer-events:none;
-}
+    transition:.3s;
 
-/* HOVER PREVIEW */
-
-.card:hover iframe{
-    opacity:1;
-}
-
-.card:hover img{
-    opacity:0;
-}
-
-/* TITLE */
-
-.title{
-    font-size:13px;
+    font-size:14px;
     letter-spacing:2px;
-    opacity:.85;
+    line-height:1.6;
+}
+
+.video:hover .overlay{
+    opacity:1;
 }
 
 /* FOOTER */
@@ -126,50 +136,29 @@ footer{
     color:#777;
 }
 
-/* MODAL */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.85);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:9999;
-}
-
-.modal.active{
-    display:flex;
-}
-
-.modal-content{
-    width:80%;
-    max-width:1000px;
-    aspect-ratio:16/9;
-}
-
-.modal-content iframe{
-    width:100%;
-    height:100%;
-    border:none;
-}
-
-.close{
-    position:absolute;
-    top:20px;
-    right:30px;
-    font-size:30px;
-    cursor:pointer;
-    color:white;
-}
-
-/* MOBILE */
-
 @media(max-width:768px){
-    header{gap:20px;}
-    .logo{width:260px;}
-    nav{gap:25px;}
-    .modal-content{width:95%;}
+
+    header{
+        flex-direction:column;
+        gap:25px;
+    }
+
+    .logo{
+        width:280px;
+    }
+
+    nav{
+        gap:25px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
 }
 
 </style>
@@ -182,123 +171,127 @@ footer{
 
     <img src="logo.png" class="logo" alt="Custom Films">
 
+    <!-- FIXED NAVIGATION -->
     <nav>
-        <a href="index.html">FILMS</a>
-        <a href="about.html">ABOUT</a>
+        <a href="./">FILMS</a>
+        <a href="./about.html">ABOUT</a>
     </nav>
 
 </header>
 
-<div id="grid" class="grid"></div>
+<div id="player-container">
 
-<footer>© Custom Films</footer>
+<iframe
+id="mainPlayer"
+src="https://player.vimeo.com/video/875134288"
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-    <div class="close" id="close">×</div>
-    <div class="modal-content">
-        <iframe id="modalFrame" allow="autoplay; fullscreen"></iframe>
-    </div>
 </div>
+
+<div class="grid">
+
+    <div class="video" data-video="875134288">
+        <img src="https://i.vimeocdn.com/video/1756885110-640.jpg" alt="">
+        <div class="overlay">CUSTOM FILMS SHOWREEL</div>
+    </div>
+
+    <div class="video" data-video="1050757865">
+        <img src="https://i.vimeocdn.com/video/1983320870-640.jpg" alt="">
+        <div class="overlay">REICHLE &amp; DE-MASSARI</div>
+    </div>
+
+    <div class="video" data-video="875132136">
+        <img src="https://i.vimeocdn.com/video/1756882036-640.jpg" alt="">
+        <div class="overlay">
+            ICELAND<br>
+            Cinematic travel film
+        </div>
+    </div>
+
+    <div class="video" data-video="482721100">
+        <img src="https://i.vimeocdn.com/video/1004604720-640.jpg" alt="">
+        <div class="overlay">MERCEDES</div>
+    </div>
+
+    <div class="video" data-video="476001858">
+        <img src="https://i.vimeocdn.com/video/989869363-640.jpg" alt="">
+        <div class="overlay">TILABRAS FISH FARM</div>
+    </div>
+
+    <div class="video" data-video="875542319">
+        <img src="https://i.vimeocdn.com/video/1757405617-640.jpg" alt="">
+        <div class="overlay">MYGYM</div>
+    </div>
+
+    <div class="video" data-video="637911167">
+        <img src="https://i.vimeocdn.com/video/1275224265-640.jpg" alt="">
+        <div class="overlay">NORTH TENERIFE</div>
+    </div>
+
+    <div class="video" data-video="644845266">
+        <img src="https://i.vimeocdn.com/video/1288228790-640.jpg" alt="">
+        <div class="overlay">WEBSTAGE MASTERS</div>
+    </div>
+
+    <div class="video" data-video="287788355">
+        <img src="https://i.vimeocdn.com/video/722954349-640.jpg" alt="">
+        <div class="overlay">PRODUCT FILM</div>
+    </div>
+
+    <div class="video" data-video="800771439">
+        <img src="https://i.vimeocdn.com/video/1600813578-640.jpg" alt="">
+        <div class="overlay">KOH SAMUI</div>
+    </div>
+
+    <div class="video" data-video="652153530">
+        <img src="https://i.vimeocdn.com/video/1303163814-640.jpg" alt="">
+        <div class="overlay">SIGNODE</div>
+    </div>
+
+    <div class="video" data-video="829526792">
+        <img src="https://i.vimeocdn.com/video/1672371800-640.jpg" alt="">
+        <div class="overlay">MYGYM PROMO</div>
+    </div>
+
+    <div class="video" data-video="348184376">
+        <img src="https://i.vimeocdn.com/video/790553969-640.jpg" alt="">
+        <div class="overlay">GREEN EIGHT CAPITAL</div>
+    </div>
+
+    <div class="video" data-video="345945132">
+        <img src="https://i.vimeocdn.com/video/786467747-640.jpg" alt="">
+        <div class="overlay">PAVILLON LE CORBUSIER</div>
+    </div>
+
+</div>
+
+<footer>
+© Custom Films
+</footer>
 
 <script>
 
-const films = [
-    "875134288",
-    "1050757865",
-    "875132136",
-    "482721100",
-    "476001858",
-    "875542319",
-    "637911167",
-    "644845266",
-    "287788355",
-    "800771439",
-    "652153530",
-    "829526792",
-    "348184376",
-    "345945132"
-];
+const player = document.getElementById('mainPlayer');
 
-const grid = document.getElementById("grid");
+document.querySelectorAll('.video').forEach(video => {
 
-const modal = document.getElementById("modal");
-const modalFrame = document.getElementById("modalFrame");
-const closeBtn = document.getElementById("close");
+    video.addEventListener('click', () => {
 
-function createCard(id){
+        const id = video.dataset.video;
 
-    const card = document.createElement("div");
-    card.className = "card";
+        player.src =
+            `https://player.vimeo.com/video/${id}?autoplay=1`;
 
-    const video = document.createElement("div");
-    video.className = "video";
-
-    video.innerHTML = `
-        <img alt="">
-        <iframe
-            src="https://player.vimeo.com/video/${id}?muted=1&background=1&autoplay=0&loop=1"
-            allow="autoplay; fullscreen"
-        ></iframe>
-    `;
-
-    const title = document.createElement("div");
-    title.className = "title";
-    title.innerText = "Loading...";
-
-    card.appendChild(video);
-    card.appendChild(title);
-    grid.appendChild(card);
-
-    const iframe = video.querySelector("iframe");
-
-    /* TITLE + THUMB */
-    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`)
-        .then(r => r.json())
-        .then(data => {
-
-            title.innerText = data.title;
-            video.querySelector("img").src =
-                data.thumbnail_url.replace("_200x150","_640");
-
+        window.scrollTo({
+            top: player.offsetTop - 40,
+            behavior: 'smooth'
         });
 
-    /* HOVER PLAY */
-    video.addEventListener("mouseenter", () => {
-        iframe.contentWindow.postMessage('{"method":"play"}', "*");
     });
 
-    video.addEventListener("mouseleave", () => {
-        iframe.contentWindow.postMessage('{"method":"pause"}', "*");
-    });
-
-    /* CLICK → OPEN MODAL */
-    video.addEventListener("click", () => {
-
-        modal.classList.add("active");
-
-        modalFrame.src =
-            `https://player.vimeo.com/video/${id}?autoplay=1&muted=0&title=0&byline=0&portrait=0`;
-
-    });
-
-}
-
-/* CLOSE MODAL */
-
-closeBtn.addEventListener("click", () => {
-    modal.classList.remove("active");
-    modalFrame.src = "";
 });
-
-modal.addEventListener("click", (e) => {
-    if(e.target === modal){
-        modal.classList.remove("active");
-        modalFrame.src = "";
-    }
-});
-
-films.forEach(createCard);
 
 </script>
 
