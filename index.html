@@ -21,35 +21,53 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 
-/* HEADER */
+/* HEADER (UNCHANGED) */
 
 header{
     width:92%;
     max-width:1800px;
     margin:auto;
-    padding:50px 0 20px;
-    text-align:center;
+    padding:40px 0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-    width:320px;
-    max-width:90%;
+    width:350px;
+    max-width:70%;
 }
 
 nav{
-    margin-top:25px;
+    display:flex;
+    gap:40px;
 }
 
 nav a{
-    color:#fff;
+    color:white;
     text-decoration:none;
-    margin:0 20px;
     letter-spacing:3px;
     font-size:13px;
+    transition:.3s;
 }
 
 nav a:hover{
     opacity:.6;
+}
+
+/* PLAYER */
+
+#player-container{
+    width:92%;
+    max-width:1800px;
+    margin:0 auto 30px;
+}
+
+#mainPlayer{
+    width:100%;
+    aspect-ratio:16/9;
+    border:none;
 }
 
 /* GRID */
@@ -58,19 +76,17 @@ nav a:hover{
     width:92%;
     max-width:1800px;
     margin:auto;
-    padding:40px 0 80px;
+    padding-bottom:80px;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:22px;
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+    gap:25px;
 }
-
-/* VIDEO CARD */
 
 .video{
     position:relative;
-    cursor:pointer;
     overflow:hidden;
+    cursor:pointer;
     background:#111;
 }
 
@@ -79,14 +95,12 @@ nav a:hover{
     aspect-ratio:16/9;
     object-fit:cover;
     display:block;
-    transition:transform .35s ease;
+    transition:transform .4s ease;
 }
 
 .video:hover img{
     transform:scale(1.03);
 }
-
-/* OVERLAY */
 
 .overlay{
     position:absolute;
@@ -95,37 +109,22 @@ nav a:hover{
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
+    padding:30px;
 
-    padding:20px;
-
-    background:rgba(0,0,0,.65);
+    background:rgba(0,0,0,.75);
 
     opacity:0;
-    transition:.25s;
+    transition:.3s;
 
     font-size:14px;
     letter-spacing:2px;
+    line-height:1.6;
 }
 
 .video:hover .overlay{
     opacity:1;
-}
-
-/* PLAYER INSIDE GRID ITEM */
-
-.video.playing{
-    background:#000;
-}
-
-.video.playing img{
-    display:none;
-}
-
-.video iframe{
-    width:100%;
-    aspect-ratio:16/9;
-    border:none;
 }
 
 /* FOOTER */
@@ -134,7 +133,32 @@ footer{
     text-align:center;
     padding:50px;
     font-size:12px;
-    color:#666;
+    color:#777;
+}
+
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        gap:25px;
+    }
+
+    .logo{
+        width:280px;
+    }
+
+    nav{
+        gap:25px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
 }
 
 </style>
@@ -148,46 +172,151 @@ footer{
     <img src="logo.png" class="logo" alt="Custom Films">
 
     <nav>
-        <a href="#">FILMS</a>
-        <a href="#">ABOUT</a>
+        <a href="index.html">FILMS</a>
+        <a href="about.html">ABOUT</a>
     </nav>
 
 </header>
 
-<div id="videoGrid" class="grid"></div>
+<div id="player-container">
 
-<footer>© Custom Films</footer>
+<iframe
+id="mainPlayer"
+src="https://player.vimeo.com/video/875134288"
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div class="grid">
+
+    <div class="video" data-video="875134288" data-title="CUSTOM FILMS SHOWREEL">
+        <img alt="">
+        <div class="overlay">CUSTOM FILMS SHOWREEL</div>
+    </div>
+
+    <div class="video" data-video="1050757865" data-title="REICHLE & DE-MASSARI">
+        <img alt="">
+        <div class="overlay">REICHLE &amp; DE-MASSARI</div>
+    </div>
+
+    <div class="video" data-video="875132136" data-title="ICELAND">
+        <img alt="">
+        <div class="overlay">ICELAND<br>Cinematic travel film</div>
+    </div>
+
+    <div class="video" data-video="482721100" data-title="MERCEDES">
+        <img alt="">
+        <div class="overlay">MERCEDES</div>
+    </div>
+
+    <div class="video" data-video="476001858" data-title="TILABRAS FISH FARM">
+        <img alt="">
+        <div class="overlay">TILABRAS FISH FARM</div>
+    </div>
+
+    <div class="video" data-video="875542319" data-title="MYGYM">
+        <img alt="">
+        <div class="overlay">MYGYM</div>
+    </div>
+
+    <div class="video" data-video="637911167" data-title="NORTH TENERIFE">
+        <img alt="">
+        <div class="overlay">NORTH TENERIFE</div>
+    </div>
+
+    <div class="video" data-video="644845266" data-title="WEBSTAGE MASTERS">
+        <img alt="">
+        <div class="overlay">WEBSTAGE MASTERS</div>
+    </div>
+
+    <div class="video" data-video="287788355" data-title="PRODUCT FILM">
+        <img alt="">
+        <div class="overlay">PRODUCT FILM</div>
+    </div>
+
+    <div class="video" data-video="800771439" data-title="KOH SAMUI">
+        <img alt="">
+        <div class="overlay">KOH SAMUI</div>
+    </div>
+
+    <div class="video" data-video="652153530" data-title="SIGNODE">
+        <img alt="">
+        <div class="overlay">SIGNODE</div>
+    </div>
+
+    <div class="video" data-video="829526792" data-title="MYGYM PROMO">
+        <img alt="">
+        <div class="overlay">MYGYM PROMO</div>
+    </div>
+
+    <div class="video" data-video="348184376" data-title="GREEN EIGHT CAPITAL">
+        <img alt="">
+        <div class="overlay">GREEN EIGHT CAPITAL</div>
+    </div>
+
+    <div class="video" data-video="345945132" data-title="PAVILLON LE CORBUSIER">
+        <img alt="">
+        <div class="overlay">PAVILLON LE CORBUSIER</div>
+    </div>
+
+</div>
+
+<footer>
+© Custom Films
+</footer>
 
 <script>
 
-const films = [
-    { id:"875134288", title:"SHOWREEL" },
-    { id:"1050757865", title:"REICHLE & DE-MASSARI" },
-    { id:"875132136", title:"ICELAND" },
-    { id:"482721100", title:"MERCEDES" },
-    { id:"476001858", title:"TILABRAS FISH FARM" },
-    { id:"875542319", title:"MYGYM" },
-    { id:"637911167", title:"NORTH TENERIFE" },
-    { id:"644845266", title:"WEBSTAGE MASTERS" },
-    { id:"287788355", title:"PRODUCT FILM" },
-    { id:"800771439", title:"KOH SAMUI" },
-    { id:"652153530", title:"SIGNODE" },
-    { id:"829526792", title:"MYGYM PROMO" },
-    { id:"348184376", title:"GREEN EIGHT CAPITAL" },
-    { id:"345945132", title:"PAVILLON LE CORBUSIER" }
-];
+const player = document.getElementById('mainPlayer');
 
-const grid = document.getElementById("videoGrid");
+/* FIX: Vimeo oEmbed Thumbnail korrekt + CORS-safe */
 
-function createCard(film){
+document.querySelectorAll('.video').forEach(video => {
 
-    const card = document.createElement("div");
-    card.className = "video";
-    card.dataset.id = film.id;
+    const id = video.dataset.video;
+    const img = video.querySelector('img');
 
-    card.innerHTML = `
-        <img alt="${film.title}">
-        <div class="overlay">${film.title}</div>
-    `;
+    /* CLICK → PLAY IN TOP PLAYER */
+    video.addEventListener('click', () => {
 
-    // FIX
+        player.src =
+            `https://player.vimeo.com/video/${id}?autoplay=1`;
+
+        window.scrollTo({
+            top: player.offsetTop - 40,
+            behavior: 'smooth'
+        });
+
+    });
+
+    /* LOAD THUMBNAIL VIA OEMBED */
+    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`)
+        .then(res => res.json())
+        .then(data => {
+
+            /* FIX: force high quality thumbnail (IMPORTANT) */
+            let thumb = data.thumbnail_url;
+
+            // Vimeo fix: replace low-res suffix if present
+            thumb = thumb.replace('_200x150', '_640');
+
+            img.src = thumb;
+
+        })
+        .catch(err => {
+
+            console.log("Thumbnail error:", id, err);
+
+            // fallback (optional)
+            img.style.background = "#222";
+
+        });
+
+});
+
+</script>
+
+</body>
+</html>
