@@ -21,7 +21,7 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 
-/* HEADER (CENTER LOGO) */
+/* HEADER */
 
 header{
     width:92%;
@@ -51,11 +51,6 @@ nav a{
     text-decoration:none;
     letter-spacing:3px;
     font-size:13px;
-    transition:.3s;
-}
-
-nav a:hover{
-    opacity:.6;
 }
 
 /* GRID */
@@ -79,7 +74,7 @@ nav a:hover{
     gap:10px;
 }
 
-/* VIDEO */
+/* VIDEO WRAP */
 
 .video{
     position:relative;
@@ -96,6 +91,7 @@ nav a:hover{
     width:100%;
     height:100%;
     object-fit:cover;
+    transition:opacity .3s ease;
 }
 
 /* IFRAME */
@@ -105,8 +101,20 @@ nav a:hover{
     width:100%;
     height:100%;
     border:none;
+
     opacity:0;
     pointer-events:none;
+    transition:opacity .3s ease;
+}
+
+/* SHOW VIDEO ON HOVER */
+
+.card:hover .video iframe{
+    opacity:1;
+}
+
+.card:hover .video img{
+    opacity:0;
 }
 
 /* TITLE */
@@ -171,9 +179,7 @@ footer{
 
 <div id="grid" class="grid"></div>
 
-<footer>
-© Custom Films
-</footer>
+<footer>© Custom Films</footer>
 
 <script>
 
@@ -207,7 +213,7 @@ function createCard(id){
     video.innerHTML = `
         <img alt="">
         <iframe
-            src="https://player.vimeo.com/video/${id}?muted=1&autoplay=0&loop=1&background=1"
+            src="https://player.vimeo.com/video/${id}?muted=1&background=1&autoplay=0&loop=1"
             allow="autoplay; fullscreen"
         ></iframe>
     `;
@@ -223,24 +229,20 @@ function createCard(id){
 
     const iframe = video.querySelector("iframe");
 
-    /* VIMEO OEMBED → TITLE + THUMB */
+    /* THUMB + TITLE */
     fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`)
         .then(r => r.json())
         .then(data => {
 
             title.innerText = data.title;
 
-            let thumb = data.thumbnail_url;
-            thumb = thumb.replace("_200x150", "_640");
+            let thumb = data.thumbnail_url.replace("_200x150", "_640");
 
             video.querySelector("img").src = thumb;
 
-        })
-        .catch(() => {
-            title.innerText = "Untitled";
         });
 
-    /* HOVER → PLAY MUTED */
+    /* HOVER = PLAY (MUTED) */
     video.addEventListener("mouseenter", () => {
 
         iframe.contentWindow.postMessage(
@@ -250,7 +252,7 @@ function createCard(id){
 
     });
 
-    /* LEAVE → PAUSE */
+    /* LEAVE = PAUSE */
     video.addEventListener("mouseleave", () => {
 
         iframe.contentWindow.postMessage(
@@ -260,7 +262,7 @@ function createCard(id){
 
     });
 
-    /* CLICK → SOUND ON + RESTART */
+    /* CLICK = FULL PLAY WITH SOUND FROM START */
     video.addEventListener("click", () => {
 
         iframe.src =
