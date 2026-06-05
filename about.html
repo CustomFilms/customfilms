@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>About | Custom Films</title>
+<title>About - Custom Films</title>
 
 <style>
 
@@ -17,8 +16,8 @@
 }
 
 body{
-    background:black;
-    color:white;
+    background:#000;
+    color:#fff;
     font-family:Arial, Helvetica, sans-serif;
 }
 
@@ -52,88 +51,74 @@ nav a{
     text-decoration:none;
     letter-spacing:3px;
     font-size:13px;
-    transition:.3s;
+    opacity:.85;
+    transition:0.3s;
 }
 
 nav a:hover{
-    opacity:.6;
+    opacity:1;
 }
 
-/* LAYOUT */
+/* ABOUT SECTION */
 
-.container{
+.about{
     width:92%;
-    max-width:1200px;
+    max-width:1100px;
     margin:auto;
+    padding:60px 0 100px;
 
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr 1.2fr;
     gap:60px;
-
-    padding:60px 0;
+    align-items:start;
 }
 
-/* IMAGE WRAPPER */
+/* IMAGE */
 
-.image-wrap{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
-}
-
-/* PROFILE IMAGE (ZOOMED + CROP) */
-
-.profile{
+.about img{
     width:100%;
-    max-width:420px;
-    aspect-ratio:1/1;
-    border-radius:50%;
+    height:auto;
     object-fit:cover;
-    transform:scale(1.25); /* <-- zoom INS bild */
-}
-
-/* CONTACT UNDER IMAGE */
-
-.contact-under{
-    text-align:center;
-    line-height:1.8;
-    color:#ccc;
-    font-size:14px;
-}
-
-.contact-under a{
-    color:white;
-    text-decoration:none;
-}
-
-.contact-under a:hover{
-    opacity:.7;
+    border-radius:2px;
 }
 
 /* TEXT */
 
-h1{
-    font-size:28px;
-    margin-bottom:25px;
-    letter-spacing:1px;
+.info h1{
+    font-size:26px;
+    letter-spacing:3px;
+    margin-bottom:10px;
 }
+
+.info h2{
+    font-size:14px;
+    font-weight:normal;
+    letter-spacing:2px;
+    opacity:.8;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+/* CONTACT */
 
 .contact{
-    display:none; /* alte Kontaktbox deaktiviert */
-}
-
-.quote{
-    font-style:italic;
-    line-height:1.8;
     margin-bottom:30px;
-    color:#bbb;
+    font-size:13px;
+    line-height:1.8;
+    letter-spacing:1px;
+    opacity:.9;
 }
 
-.text p{
-    line-height:1.9;
-    color:#ddd;
-    margin-bottom:18px;
+.contact span{
+    display:block;
+}
+
+/* PARAGRAPH */
+
+.text{
+    font-size:14px;
+    line-height:1.8;
+    opacity:.85;
 }
 
 /* FOOTER */
@@ -145,20 +130,19 @@ footer{
     color:#777;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:768px){
 
-    .container{
+    .about{
         grid-template-columns:1fr;
-        gap:40px;
+        gap:30px;
+        padding:40px 0 80px;
     }
 
-    .profile{
-        max-width:300px;
-        transform:scale(1.15);
+    .info h1{
+        font-size:22px;
     }
-
 }
 
 </style>
@@ -178,59 +162,33 @@ footer{
 
 </header>
 
-<div class="container">
+<section class="about">
 
-    <!-- LEFT IMAGE SIDE -->
-    <div class="image-wrap">
+    <!-- IMAGE -->
+    <img src="marco.jpg" alt="Marco Sahli">
 
-        <img src="marco.jpg" class="profile" alt="Marco Sahli">
-
-        <div class="contact-under">
-            <strong>Marco Sahli</strong><br><br>
-
-            Florastrasse 18<br>
-            8008 Zürich<br><br>
-
-            Email:<br>
-            <a href="mailto:info@customfilms.ch">info@customfilms.ch</a><br><br>
-
-            Telefon:<br>
-            <a href="tel:+41763422307">+41 76 342 23 07</a>
-        </div>
-
-    </div>
-
-    <!-- RIGHT TEXT SIDE -->
-    <div>
+    <!-- INFO -->
+    <div class="info">
 
         <h1>Marco Sahli</h1>
+        <h2>Filmmaker / Creative Producer</h2>
 
-        <div class="quote">
-            "The spirit of structure can't be foreseen,<br><br>
-            For somewhere between<br>
-            The architecture and the dream<br><br>
-            More than the sum of its parts<br><br>
-            Somehow, somewhere, the heart."<br><br>
-            — Lemn Sissay
+        <div class="contact">
+            <span>Florastrasse 18</span>
+            <span>8008 Zürich</span>
+            <span>Email: info@customfilms.ch</span>
+            <span>Phone: +41 76 342 23 07</span>
         </div>
 
         <div class="text">
-
-            <p>Films are meant to leave long-lasting impressions.</p>
-            <p>This is achieved through attractive shots, smooth cuts, and inspiring music.</p>
-            <p>When these elements come together, a film is created that touches people. This is my passion.</p>
-            <p>I would be happy to assist you in bringing your film project to life.</p>
-            <p>I look forward to a creative and successful collaboration.</p>
-
+            Films are meant to leave long-lasting impressions. This is achieved through attractive shots, smooth cuts, and inspiring music. When these elements come together, a film is created that touches people. This is my passion. I would be happy to assist you in bringing your film project to life. I look forward to a creative and successful collaboration. This is achieved through attractive shots, smooth cuts, and inspiring music. When these elements come together, a film is created that touches people. This is my passion. I would be happy to assist you in bringing your film project to life. I look forward to a creative and successful collaboration.
         </div>
 
     </div>
 
-</div>
+</section>
 
-<footer>
-© Custom Films
-</footer>
+<footer>© Custom Films</footer>
 
 </body>
 </html>
