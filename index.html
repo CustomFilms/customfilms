@@ -66,20 +66,28 @@ nav a:hover{
 
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
-    gap:22px;
+    gap:25px;
 }
 
 /* CARD */
 
+.card{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+/* VIDEO WRAP */
+
 .video{
     position:relative;
+    aspect-ratio:16/9;
     overflow:hidden;
     cursor:pointer;
     background:#111;
-    aspect-ratio:16/9;
 }
 
-/* IMAGE */
+/* THUMB */
 
 .video img{
     position:absolute;
@@ -89,7 +97,7 @@ nav a:hover{
     transition:opacity .3s ease;
 }
 
-/* IFRAME (hidden until hover) */
+/* IFRAME */
 
 .video iframe{
     position:absolute;
@@ -101,38 +109,22 @@ nav a:hover{
     transition:opacity .3s ease;
 }
 
-/* SHOW VIDEO ON HOVER */
+/* TITLE BELOW */
 
-.video:hover iframe{
-    opacity:1;
-}
-
-.video:hover img{
-    opacity:0;
-}
-
-/* OVERLAY */
-
-.overlay{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:rgba(0,0,0,.35);
-
-    opacity:0;
-    transition:.25s;
-
-    font-size:14px;
+.title{
+    font-size:13px;
     letter-spacing:2px;
-    text-align:center;
+    opacity:.8;
 }
 
-.video:hover .overlay{
+/* HOVER STATE */
+
+.card:hover iframe{
     opacity:1;
+}
+
+.card:hover img{
+    opacity:0;
 }
 
 /* MOBILE */
@@ -205,66 +197,78 @@ const grid = document.getElementById("grid");
 function createCard(film){
 
     const card = document.createElement("div");
-    card.className = "video";
-    card.dataset.id = film.id;
+    card.className = "card";
 
-    card.innerHTML = `
+    const video = document.createElement("div");
+    video.className = "video";
+
+    video.innerHTML = `
         <img alt="${film.title}">
         <iframe
             src="https://player.vimeo.com/video/${film.id}?muted=1&autoplay=0&loop=1&background=1"
             allow="autoplay; fullscreen"
         ></iframe>
-        <div class="overlay">${film.title}</div>
     `;
 
-    /* LOAD THUMBNAIL (FIXED OEMBED) */
+    const title = document.createElement("div");
+    title.className = "title";
+    title.innerText = film.title;
 
+    card.appendChild(video);
+    card.appendChild(title);
+
+    grid.appendChild(card);
+
+    const iframe = video.querySelector("iframe");
+
+    /* THUMBNAIL FIX (VIMEO OEMBED) */
     fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${film.id}`)
         .then(r => r.json())
         .then(data => {
 
             let thumb = data.thumbnail_url;
-
-            // FIX Vimeo low-res palette issue
             thumb = thumb.replace("_200x150", "_640");
 
-            card.querySelector("img").src = thumb;
+            video.querySelector("img").src = thumb;
 
         });
 
-    grid.appendChild(card);
+    /* HOVER = PLAY MUTED */
+    video.addEventListener("mouseenter", () => {
+
+        iframe.contentWindow.postMessage(
+            '{"method":"play"}',
+            "*"
+        );
+
+    });
+
+    /* LEAVE = PAUSE + RESET */
+    video.addEventListener("mouseleave", () => {
+
+        iframe.contentWindow.postMessage(
+            '{"method":"pause"}',
+            "*"
+        );
+
+        iframe.contentWindow.postMessage(
+            '{"method":"setCurrentTime","value":0}',
+            "*"
+        );
+
+    });
+
+    /* CLICK = PLAY WITH SOUND FROM START */
+    video.addEventListener("click", () => {
+
+        iframe.src =
+            `https://player.vimeo.com/video/${film.id}?autoplay=1&muted=0&background=0`;
+
+    });
 
 }
 
 films.forEach(createCard);
-
-/* HOVER PLAY CONTROL */
-
-document.addEventListener("mouseover", (e) => {
-
-    const card = e.target.closest(".video");
-    if(!card) return;
-
-    const iframe = card.querySelector("iframe");
-    iframe.contentWindow.postMessage(
-        '{"method":"play"}',
-        "*"
-    );
-
-});
-
-document.addEventListener("mouseout", (e) => {
-
-    const card = e.target.closest(".video");
-    if(!card) return;
-
-    const iframe = card.querySelector("iframe");
-    iframe.contentWindow.postMessage(
-        '{"method":"pause"}',
-        "*"
-    );
-
-});
 
 </script>
 
