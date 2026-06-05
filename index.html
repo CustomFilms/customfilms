@@ -27,47 +27,29 @@ header{
     width:92%;
     max-width:1800px;
     margin:auto;
-    padding:40px 0;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    padding:50px 0 20px;
+    text-align:center;
 }
 
 .logo{
-    width:350px;
-    max-width:70%;
+    width:320px;
+    max-width:90%;
 }
 
 nav{
-    display:flex;
-    gap:40px;
+    margin-top:25px;
 }
 
 nav a{
-    color:white;
+    color:#fff;
     text-decoration:none;
+    margin:0 20px;
     letter-spacing:3px;
     font-size:13px;
-    transition:.3s;
 }
 
 nav a:hover{
     opacity:.6;
-}
-
-/* PLAYER */
-
-#player-container{
-    width:92%;
-    max-width:1800px;
-    margin:0 auto 30px;
-}
-
-#mainPlayer{
-    width:100%;
-    aspect-ratio:16/9;
-    border:none;
 }
 
 /* GRID */
@@ -76,17 +58,19 @@ nav a:hover{
     width:92%;
     max-width:1800px;
     margin:auto;
-    padding-bottom:80px;
+    padding:40px 0 80px;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:22px;
 }
+
+/* VIDEO CARD */
 
 .video{
     position:relative;
-    overflow:hidden;
     cursor:pointer;
+    overflow:hidden;
     background:#111;
 }
 
@@ -95,12 +79,14 @@ nav a:hover{
     aspect-ratio:16/9;
     object-fit:cover;
     display:block;
-    transition:transform .4s ease;
+    transition:transform .35s ease;
 }
 
 .video:hover img{
     transform:scale(1.03);
 }
+
+/* OVERLAY */
 
 .overlay{
     position:absolute;
@@ -109,22 +95,37 @@ nav a:hover{
     display:flex;
     align-items:center;
     justify-content:center;
-
     text-align:center;
-    padding:30px;
 
-    background:rgba(0,0,0,.75);
+    padding:20px;
+
+    background:rgba(0,0,0,.65);
 
     opacity:0;
-    transition:.3s;
+    transition:.25s;
 
     font-size:14px;
     letter-spacing:2px;
-    line-height:1.6;
 }
 
 .video:hover .overlay{
     opacity:1;
+}
+
+/* PLAYER INSIDE GRID ITEM */
+
+.video.playing{
+    background:#000;
+}
+
+.video.playing img{
+    display:none;
+}
+
+.video iframe{
+    width:100%;
+    aspect-ratio:16/9;
+    border:none;
 }
 
 /* FOOTER */
@@ -133,32 +134,7 @@ footer{
     text-align:center;
     padding:50px;
     font-size:12px;
-    color:#777;
-}
-
-@media(max-width:768px){
-
-    header{
-        flex-direction:column;
-        gap:25px;
-    }
-
-    .logo{
-        width:280px;
-    }
-
-    nav{
-        gap:25px;
-    }
-
-}
-
-@media(max-width:600px){
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
+    color:#666;
 }
 
 </style>
@@ -172,127 +148,46 @@ footer{
     <img src="logo.png" class="logo" alt="Custom Films">
 
     <nav>
-        <a href="index.html">FILMS</a>
-        <a href="about.html">ABOUT</a>
+        <a href="#">FILMS</a>
+        <a href="#">ABOUT</a>
     </nav>
 
 </header>
 
-<div id="player-container">
+<div id="videoGrid" class="grid"></div>
 
-<iframe
-id="mainPlayer"
-src="https://player.vimeo.com/video/875134288"
-allow="autoplay; fullscreen"
-allowfullscreen>
-</iframe>
-
-</div>
-
-<div class="grid">
-
-    <div class="video" data-video="875134288">
-        <img src="https://i.vimeocdn.com/video/1756885110-640.jpg" alt="">
-        <div class="overlay">CUSTOM FILMS SHOWREEL</div>
-    </div>
-
-    <div class="video" data-video="1050757865">
-        <img src="https://i.vimeocdn.com/video/1983320870-640.jpg" alt="">
-        <div class="overlay">REICHLE &amp; DE-MASSARI</div>
-    </div>
-
-    <div class="video" data-video="875132136">
-        <img src="https://i.vimeocdn.com/video/1756882036-640.jpg" alt="">
-        <div class="overlay">
-            ICELAND<br>
-            Cinematic travel film
-        </div>
-    </div>
-
-    <div class="video" data-video="482721100">
-        <img src="https://i.vimeocdn.com/video/1004604720-640.jpg" alt="">
-        <div class="overlay">MERCEDES</div>
-    </div>
-
-    <div class="video" data-video="476001858">
-        <img src="https://i.vimeocdn.com/video/989869363-640.jpg" alt="">
-        <div class="overlay">TILABRAS FISH FARM</div>
-    </div>
-
-    <div class="video" data-video="875542319">
-        <img src="https://i.vimeocdn.com/video/1757405617-640.jpg" alt="">
-        <div class="overlay">MYGYM</div>
-    </div>
-
-    <div class="video" data-video="637911167">
-        <img src="https://i.vimeocdn.com/video/1275224265-640.jpg" alt="">
-        <div class="overlay">NORTH TENERIFE</div>
-    </div>
-
-    <div class="video" data-video="644845266">
-        <img src="https://i.vimeocdn.com/video/1288228790-640.jpg" alt="">
-        <div class="overlay">WEBSTAGE MASTERS</div>
-    </div>
-
-    <div class="video" data-video="287788355">
-        <img src="https://i.vimeocdn.com/video/722954349-640.jpg" alt="">
-        <div class="overlay">PRODUCT FILM</div>
-    </div>
-
-    <div class="video" data-video="800771439">
-        <img src="https://i.vimeocdn.com/video/1600813578-640.jpg" alt="">
-        <div class="overlay">KOH SAMUI</div>
-    </div>
-
-    <div class="video" data-video="652153530">
-        <img src="https://i.vimeocdn.com/video/1303163814-640.jpg" alt="">
-        <div class="overlay">SIGNODE</div>
-    </div>
-
-    <div class="video" data-video="829526792">
-        <img src="https://i.vimeocdn.com/video/1672371800-640.jpg" alt="">
-        <div class="overlay">MYGYM PROMO</div>
-    </div>
-
-    <div class="video" data-video="348184376">
-        <img src="https://i.vimeocdn.com/video/790553969-640.jpg" alt="">
-        <div class="overlay">GREEN EIGHT CAPITAL</div>
-    </div>
-
-    <div class="video" data-video="345945132">
-        <img src="https://i.vimeocdn.com/video/786467747-640.jpg" alt="">
-        <div class="overlay">PAVILLON LE CORBUSIER</div>
-    </div>
-
-</div>
-
-<footer>
-© Custom Films
-</footer>
+<footer>© Custom Films</footer>
 
 <script>
 
-const player = document.getElementById('mainPlayer');
+const films = [
+    { id:"875134288", title:"SHOWREEL" },
+    { id:"1050757865", title:"REICHLE & DE-MASSARI" },
+    { id:"875132136", title:"ICELAND" },
+    { id:"482721100", title:"MERCEDES" },
+    { id:"476001858", title:"TILABRAS FISH FARM" },
+    { id:"875542319", title:"MYGYM" },
+    { id:"637911167", title:"NORTH TENERIFE" },
+    { id:"644845266", title:"WEBSTAGE MASTERS" },
+    { id:"287788355", title:"PRODUCT FILM" },
+    { id:"800771439", title:"KOH SAMUI" },
+    { id:"652153530", title:"SIGNODE" },
+    { id:"829526792", title:"MYGYM PROMO" },
+    { id:"348184376", title:"GREEN EIGHT CAPITAL" },
+    { id:"345945132", title:"PAVILLON LE CORBUSIER" }
+];
 
-document.querySelectorAll('.video').forEach(video => {
+const grid = document.getElementById("videoGrid");
 
-    video.addEventListener('click', () => {
+function createCard(film){
 
-        const id = video.dataset.video;
+    const card = document.createElement("div");
+    card.className = "video";
+    card.dataset.id = film.id;
 
-        player.src =
-            `https://player.vimeo.com/video/${id}?autoplay=1`;
+    card.innerHTML = `
+        <img alt="${film.title}">
+        <div class="overlay">${film.title}</div>
+    `;
 
-        window.scrollTo({
-            top: player.offsetTop - 40,
-            behavior: 'smooth'
-        });
-
-    });
-
-});
-
-</script>
-
-</body>
-</html>
+    // FIX
