@@ -9,7 +9,7 @@
 
 <title>About — Custom Films</title>
 
-<meta name="description" content="Custom Films — filmmaking and creative production by Marco Sahli, based in Zürich, Switzerland.">
+<meta name="description" content="Custom Films — independent filmmaking and creative production by Marco Sahli, based in Zürich, Switzerland.">
 
 <style>
 
@@ -30,7 +30,7 @@ body{
     overflow-x:hidden;
 }
 
-/* SUBTLE BACKGROUND DOTS */
+/* BACKGROUND DOTS */
 
 body::before{
     content:"";
@@ -38,7 +38,7 @@ body::before{
     inset:0;
     pointer-events:none;
     z-index:0;
-    opacity:.18;
+    opacity:.16;
 
     background-image:radial-gradient(
         rgba(255,255,255,.7) .7px,
@@ -46,14 +46,17 @@ body::before{
     );
 
     background-size:22px 22px;
+
     mask-image:linear-gradient(
         to bottom,
-        rgba(0,0,0,.8),
-        rgba(0,0,0,.15)
+        rgba(0,0,0,.9),
+        rgba(0,0,0,.2)
     );
 }
 
-/* HEADER */
+/* HEADER
+   IDENTICAL TO FILMS PAGE
+*/
 
 header{
     position:relative;
@@ -97,49 +100,52 @@ nav a.active{
     opacity:1;
 }
 
-/* HERO */
+/* ABOUT INTRO */
 
-.hero{
+.about-intro{
     position:relative;
     z-index:1;
-
-    min-height:72vh;
 
     width:92%;
     max-width:1800px;
     margin:auto;
 
+    min-height:72vh;
+
     display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
+    align-items:flex-end;
 
-    padding:80px 0 100px;
+    padding:80px 0 110px;
 }
 
-.kicker{
-    font-size:12px;
-    letter-spacing:4px;
-    opacity:.5;
-    margin-bottom:28px;
-}
+.about-intro h1{
+    font-size:clamp(60px,11vw,180px);
+    line-height:.88;
 
-.hero h1{
-    font-size:clamp(65px,13vw,210px);
-    line-height:.82;
     font-weight:400;
-    letter-spacing:-7px;
-    text-transform:uppercase;
+    letter-spacing:-6px;
 
-    max-width:1500px;
+    max-width:1600px;
 }
 
-.hero h1 span{
+.about-intro h1 .small{
+    display:block;
+
+    font-size:clamp(14px,1.3vw,20px);
+    letter-spacing:6px;
+
+    opacity:.45;
+
+    margin-bottom:40px;
+}
+
+.about-intro h1 .line{
     display:block;
 }
 
-/* INTRO */
+/* STATEMENT */
 
-.intro{
+.statement{
     position:relative;
     z-index:1;
 
@@ -149,28 +155,29 @@ nav a.active{
 
     border-top:1px solid #222;
 
-    padding:80px 0 160px;
+    padding:90px 0 150px;
 
     display:grid;
     grid-template-columns:1fr 2fr;
     gap:60px;
 }
 
-.intro-label{
+.label{
     font-size:11px;
     letter-spacing:3px;
-    opacity:.45;
+    opacity:.4;
 }
 
-.intro-text{
-    max-width:900px;
+.statement-text{
+    max-width:1000px;
 }
 
-.intro-text p{
-    font-size:clamp(28px,3.5vw,58px);
-    line-height:1.08;
+.statement-text p{
+    font-size:clamp(30px,4vw,65px);
+    line-height:1.05;
+
     font-weight:300;
-    letter-spacing:-1.5px;
+    letter-spacing:-2px;
 }
 
 /* VIDEO */
@@ -183,28 +190,28 @@ nav a.active{
     max-width:1800px;
     margin:auto;
 
-    padding-bottom:160px;
+    padding-bottom:150px;
 }
 
-.video-wrapper{
-    position:relative;
-
+.video{
     width:100%;
     aspect-ratio:16/9;
 
     overflow:hidden;
     background:#111;
+
+    position:relative;
 }
 
-.video-wrapper iframe{
+.video iframe{
     width:100%;
     height:100%;
     border:0;
 }
 
-/* CONTACT */
+/* PERSONAL */
 
-.contact-section{
+.personal{
     position:relative;
     z-index:1;
 
@@ -214,60 +221,60 @@ nav a.active{
 
     border-top:1px solid #222;
 
-    padding:70px 0 120px;
+    padding:80px 0 140px;
 
     display:grid;
     grid-template-columns:1fr 2fr;
     gap:60px;
 }
 
-.contact-label{
-    font-size:11px;
-    letter-spacing:3px;
-    opacity:.45;
+.personal-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
 }
 
-.contact-content{
-    display:flex;
-    flex-direction:column;
-    gap:35px;
-}
-
-.contact-name{
+.name{
     font-size:clamp(35px,5vw,75px);
-    line-height:1;
+    line-height:.95;
+    letter-spacing:-3px;
     font-weight:400;
-    letter-spacing:-2px;
 }
 
-.contact-role{
-    font-size:13px;
+.role{
+    font-size:12px;
     letter-spacing:2px;
-    opacity:.5;
-    margin-top:-20px;
+    opacity:.45;
+
+    margin-top:20px;
 }
 
-.contact-links{
+.contact{
     display:flex;
     flex-direction:column;
     gap:8px;
 }
 
-.contact-links a{
+.contact a{
     color:#fff;
     text-decoration:none;
-    font-size:20px;
+
+    font-size:18px;
+
     transition:opacity .25s ease;
 }
 
-.contact-links a:hover{
-    opacity:.5;
+.contact a:hover{
+    opacity:.45;
 }
 
 .location{
-    font-size:14px;
+    margin-top:25px;
+
+    font-size:13px;
     line-height:1.7;
-    opacity:.5;
+
+    opacity:.45;
 }
 
 /* FOOTER */
@@ -289,6 +296,7 @@ footer{
 
     font-size:10px;
     letter-spacing:2px;
+
     opacity:.4;
 }
 
@@ -313,41 +321,52 @@ footer{
         font-size:11px;
     }
 
-    .hero{
-        min-height:65vh;
-        padding:60px 0 70px;
+    .about-intro{
+        min-height:68vh;
+        padding:60px 0 80px;
     }
 
-    .hero h1{
-        font-size:clamp(55px,18vw,120px);
+    .about-intro h1{
+        font-size:clamp(52px,16vw,110px);
         letter-spacing:-4px;
     }
 
-    .intro,
-    .contact-section{
-        grid-template-columns:1fr;
-        gap:35px;
+    .about-intro h1 .small{
+        font-size:10px;
+        letter-spacing:4px;
+        margin-bottom:30px;
     }
 
-    .intro{
+    .statement{
+        grid-template-columns:1fr;
+        gap:35px;
+
         padding:55px 0 100px;
     }
 
-    .intro-text p{
-        font-size:30px;
-        line-height:1.12;
+    .statement-text p{
+        font-size:32px;
+        letter-spacing:-1px;
     }
 
     .video-section{
         padding-bottom:100px;
     }
 
-    .contact-section{
+    .personal{
+        grid-template-columns:1fr;
+        gap:35px;
+
         padding:55px 0 90px;
     }
 
-    .contact-name{
-        font-size:48px;
+    .personal-content{
+        grid-template-columns:1fr;
+        gap:55px;
+    }
+
+    .name{
+        font-size:50px;
     }
 
     footer{
@@ -367,12 +386,22 @@ footer{
 
 ```
 <a href="./index.html">
-    <img src="logo.png" class="logo" alt="Custom Films">
+    <img
+        src="logo.png"
+        class="logo"
+        alt="Custom Films">
 </a>
 
 <nav>
-    <a href="./index.html">FILMS</a>
-    <a href="./about.html" class="active">ABOUT</a>
+
+    <a href="./index.html">
+        FILMS
+    </a>
+
+    <a href="./about.html" class="active">
+        ABOUT
+    </a>
+
 </nav>
 ```
 
@@ -380,34 +409,49 @@ footer{
 
 <main>
 
-<section class="hero">
+<!-- INTRO -->
+
+<section class="about-intro">
 
 ```
-<div class="kicker">
-    CUSTOM FILMS — ZÜRICH
-</div>
-
 <h1>
-    <span>FILMS.</span>
-    <span>STORIES.</span>
-    <span>PEOPLE.</span>
+
+    <span class="small">
+        CUSTOM FILMS — ZÜRICH
+    </span>
+
+    <span class="line">
+        FILMS,
+    </span>
+
+    <span class="line">
+        STORIES,
+    </span>
+
+    <span class="line">
+        PEOPLE.
+    </span>
+
 </h1>
 ```
 
 </section>
 
-<section class="intro">
+<!-- STATEMENT -->
+
+<section class="statement">
 
 ```
-<div class="intro-label">
-    01 — ABOUT
+<div class="label">
+    01 — WHAT WE DO
 </div>
 
-<div class="intro-text">
+<div class="statement-text">
 
     <p>
-        Custom Films is an independent filmmaking
-        and creative production studio based in Zürich.
+        We create films with people,
+        brands and ideas worth
+        remembering.
     </p>
 
 </div>
@@ -415,10 +459,12 @@ footer{
 
 </section>
 
+<!-- VIDEO -->
+
 <section class="video-section">
 
 ```
-<div class="video-wrapper">
+<div class="video">
 
     <iframe
         src="https://player.vimeo.com/video/1198727288?background=1&autoplay=1&loop=1&muted=1"
@@ -432,24 +478,34 @@ footer{
 
 </section>
 
-<section class="contact-section">
+<!-- PERSONAL / CONTACT -->
+
+<section class="personal">
 
 ```
-<div class="contact-label">
-    02 — CONTACT
+<div class="label">
+    02 — CUSTOM FILMS
 </div>
 
-<div class="contact-content">
 
-    <div class="contact-name">
-        Marco Sahli
+<div class="personal-content">
+
+
+    <div>
+
+        <div class="name">
+            Marco<br>
+            Sahli
+        </div>
+
+        <div class="role">
+            FILMMAKER / CREATIVE PRODUCER
+        </div>
+
     </div>
 
-    <div class="contact-role">
-        FILMMAKER / CREATIVE PRODUCER
-    </div>
 
-    <div class="contact-links">
+    <div class="contact">
 
         <a href="mailto:info@customfilms.ch">
             info@customfilms.ch
@@ -459,13 +515,16 @@ footer{
             +41 76 342 23 07
         </a>
 
+        <div class="location">
+
+            Florastrasse 18<br>
+            8008 Zürich<br>
+            Switzerland
+
+        </div>
+
     </div>
 
-    <div class="location">
-        Florastrasse 18<br>
-        8008 Zürich<br>
-        Switzerland
-    </div>
 
 </div>
 ```
@@ -477,9 +536,13 @@ footer{
 <footer>
 
 ```
-<span>© CUSTOM FILMS</span>
+<span>
+    © CUSTOM FILMS
+</span>
 
-<span>ZÜRICH / SWITZERLAND</span>
+<span>
+    ZÜRICH / SWITZERLAND
+</span>
 ```
 
 </footer>
