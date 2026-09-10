@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Custom Films</title>
+<title>About — Custom Films</title>
 
-<meta name="description" content="Custom Films — filmmaking and creative production based in Zürich, Switzerland.">
+<meta name="description" content="Custom Films — filmmaking and creative production by Marco Sahli, based in Zürich, Switzerland.">
 
 <style>
 
@@ -96,9 +97,49 @@ nav a.active{
     opacity:1;
 }
 
-/* CLAIM */
+/* HERO */
 
-.claim{
+.hero{
+    position:relative;
+    z-index:1;
+
+    min-height:72vh;
+
+    width:92%;
+    max-width:1800px;
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    padding:80px 0 100px;
+}
+
+.kicker{
+    font-size:12px;
+    letter-spacing:4px;
+    opacity:.5;
+    margin-bottom:28px;
+}
+
+.hero h1{
+    font-size:clamp(65px,13vw,210px);
+    line-height:.82;
+    font-weight:400;
+    letter-spacing:-7px;
+    text-transform:uppercase;
+
+    max-width:1500px;
+}
+
+.hero h1 span{
+    display:block;
+}
+
+/* INTRO */
+
+.intro{
     position:relative;
     z-index:1;
 
@@ -106,86 +147,127 @@ nav a.active{
     max-width:1800px;
     margin:auto;
 
-    padding:30px 0 65px;
+    border-top:1px solid #222;
 
-    font-size:clamp(14px,1.4vw,22px);
-    letter-spacing:7px;
-    text-transform:uppercase;
+    padding:80px 0 160px;
+
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:60px;
+}
+
+.intro-label{
+    font-size:11px;
+    letter-spacing:3px;
     opacity:.45;
 }
 
-/* GRID */
+.intro-text{
+    max-width:900px;
+}
 
-.grid{
+.intro-text p{
+    font-size:clamp(28px,3.5vw,58px);
+    line-height:1.08;
+    font-weight:300;
+    letter-spacing:-1.5px;
+}
+
+/* VIDEO */
+
+.video-section{
     position:relative;
     z-index:1;
 
     width:92%;
     max-width:1800px;
     margin:auto;
-    padding-bottom:80px;
 
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
-    gap:25px;
+    padding-bottom:160px;
 }
 
-/* CARD */
-
-.card{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.video{
+.video-wrapper{
     position:relative;
+
+    width:100%;
     aspect-ratio:16/9;
+
     overflow:hidden;
-    cursor:pointer;
     background:#111;
 }
 
-.video img{
-    position:absolute;
-    inset:0;
-
+.video-wrapper iframe{
     width:100%;
     height:100%;
-    object-fit:cover;
-
-    opacity:1;
-    transition:opacity .35s ease;
+    border:0;
 }
 
-.video iframe{
-    position:absolute;
-    inset:0;
+/* CONTACT */
 
-    width:100%;
-    height:100%;
-    border:none;
+.contact-section{
+    position:relative;
+    z-index:1;
 
-    opacity:0;
-    pointer-events:none;
+    width:92%;
+    max-width:1800px;
+    margin:auto;
 
-    transition:opacity .35s ease;
+    border-top:1px solid #222;
+
+    padding:70px 0 120px;
+
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:60px;
 }
 
-.video.previewing iframe{
-    opacity:1;
+.contact-label{
+    font-size:11px;
+    letter-spacing:3px;
+    opacity:.45;
 }
 
-.video.previewing img{
-    opacity:0;
+.contact-content{
+    display:flex;
+    flex-direction:column;
+    gap:35px;
 }
 
-/* TITLE */
+.contact-name{
+    font-size:clamp(35px,5vw,75px);
+    line-height:1;
+    font-weight:400;
+    letter-spacing:-2px;
+}
 
-.title{
+.contact-role{
     font-size:13px;
     letter-spacing:2px;
-    opacity:.85;
+    opacity:.5;
+    margin-top:-20px;
+}
+
+.contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.contact-links a{
+    color:#fff;
+    text-decoration:none;
+    font-size:20px;
+    transition:opacity .25s ease;
+}
+
+.contact-links a:hover{
+    opacity:.5;
+}
+
+.location{
+    font-size:14px;
+    line-height:1.7;
+    opacity:.5;
 }
 
 /* FOOTER */
@@ -194,61 +276,20 @@ footer{
     position:relative;
     z-index:1;
 
-    text-align:center;
-    padding:50px;
+    width:92%;
+    max-width:1800px;
+    margin:auto;
 
-    font-size:12px;
-    color:#777;
-}
+    border-top:1px solid #222;
 
-/* MODAL */
+    padding:30px 0 50px;
 
-.modal{
-    position:fixed;
-    inset:0;
-
-    background:rgba(0,0,0,.92);
-
-    display:none;
-    align-items:center;
-    justify-content:center;
-
-    z-index:9999;
-}
-
-.modal.active{
     display:flex;
-}
+    justify-content:space-between;
 
-.modal-content{
-    width:80%;
-    max-width:1200px;
-    aspect-ratio:16/9;
-}
-
-.modal-content iframe{
-    width:100%;
-    height:100%;
-    border:none;
-}
-
-.close{
-    position:absolute;
-    top:20px;
-    right:30px;
-
-    font-size:30px;
-    line-height:1;
-
-    cursor:pointer;
-    color:white;
-    opacity:.7;
-
-    transition:opacity .2s ease;
-}
-
-.close:hover{
-    opacity:1;
+    font-size:10px;
+    letter-spacing:2px;
+    opacity:.4;
 }
 
 /* MOBILE */
@@ -272,25 +313,48 @@ footer{
         font-size:11px;
     }
 
-    .claim{
-        padding:20px 0 45px;
-        font-size:11px;
-        letter-spacing:4px;
-        line-height:1.8;
+    .hero{
+        min-height:65vh;
+        padding:60px 0 70px;
     }
 
-    .grid{
+    .hero h1{
+        font-size:clamp(55px,18vw,120px);
+        letter-spacing:-4px;
+    }
+
+    .intro,
+    .contact-section{
         grid-template-columns:1fr;
-        gap:28px;
+        gap:35px;
     }
 
-    .modal-content{
-        width:95%;
+    .intro{
+        padding:55px 0 100px;
+    }
+
+    .intro-text p{
+        font-size:30px;
+        line-height:1.12;
+    }
+
+    .video-section{
+        padding-bottom:100px;
+    }
+
+    .contact-section{
+        padding:55px 0 90px;
+    }
+
+    .contact-name{
+        font-size:48px;
     }
 
     footer{
-        padding:40px 20px;
+        flex-direction:column;
+        gap:15px;
     }
+
 }
 
 </style>
@@ -307,237 +371,119 @@ footer{
 </a>
 
 <nav>
-    <a href="./index.html" class="active">FILMS</a>
-    <a href="./about.html">ABOUT</a>
+    <a href="./index.html">FILMS</a>
+    <a href="./about.html" class="active">ABOUT</a>
 </nav>
 ```
 
 </header>
 
-<div class="claim">
-    FILMS, STORIES, PEOPLE
-</div>
+<main>
 
-<div id="grid" class="grid"></div>
-
-<footer>© Custom Films</footer>
-
-<!-- MODAL -->
-
-<div id="modal" class="modal">
+<section class="hero">
 
 ```
-<div class="close" id="close">×</div>
+<div class="kicker">
+    CUSTOM FILMS — ZÜRICH
+</div>
 
-<div class="modal-content">
+<h1>
+    <span>FILMS.</span>
+    <span>STORIES.</span>
+    <span>PEOPLE.</span>
+</h1>
+```
+
+</section>
+
+<section class="intro">
+
+```
+<div class="intro-label">
+    01 — ABOUT
+</div>
+
+<div class="intro-text">
+
+    <p>
+        Custom Films is an independent filmmaking
+        and creative production studio based in Zürich.
+    </p>
+
+</div>
+```
+
+</section>
+
+<section class="video-section">
+
+```
+<div class="video-wrapper">
+
     <iframe
-        id="modalFrame"
+        src="https://player.vimeo.com/video/1198727288?background=1&autoplay=1&loop=1&muted=1"
+        loading="lazy"
         allow="autoplay; fullscreen"
         allowfullscreen>
     </iframe>
+
 </div>
 ```
 
+</section>
+
+<section class="contact-section">
+
+```
+<div class="contact-label">
+    02 — CONTACT
 </div>
 
-<script>
+<div class="contact-content">
 
-const films = [
-    "875134288",
-    "1050757865",
-    "875132136",
-    "482721100",
-    "476001858",
-    "875542319",
-    "637911167",
-    "644845266",
-    "287788355",
-    "800771439",
-    "652153530",
-    "829526792",
-    "348184376",
-    "345945132"
-];
+    <div class="contact-name">
+        Marco Sahli
+    </div>
 
-const grid = document.getElementById("grid");
+    <div class="contact-role">
+        FILMMAKER / CREATIVE PRODUCER
+    </div>
 
-const modal = document.getElementById("modal");
-const modalFrame = document.getElementById("modalFrame");
-const closeBtn = document.getElementById("close");
+    <div class="contact-links">
 
-/* CREATE CARD */
+        <a href="mailto:info@customfilms.ch">
+            info@customfilms.ch
+        </a>
 
-function createCard(id){
+        <a href="tel:+41763422307">
+            +41 76 342 23 07
+        </a>
 
-    const card = document.createElement("div");
-    card.className = "card";
+    </div>
 
-    const video = document.createElement("div");
-    video.className = "video";
+    <div class="location">
+        Florastrasse 18<br>
+        8008 Zürich<br>
+        Switzerland
+    </div>
 
-    const image = document.createElement("img");
-    image.alt = "Custom Films video";
-    image.loading = "lazy";
-    image.decoding = "async";
+</div>
+```
 
-    const title = document.createElement("div");
-    title.className = "title";
-    title.innerText = "Loading...";
+</section>
 
-    video.appendChild(image);
+</main>
 
-    card.appendChild(video);
-    card.appendChild(title);
+<footer>
 
-    grid.appendChild(card);
+```
+<span>© CUSTOM FILMS</span>
 
-    let iframe = null;
-    let loaded = false;
+<span>ZÜRICH / SWITZERLAND</span>
+```
 
-    /* LOAD THUMBNAIL + TITLE */
-
-    fetch(
-        `https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`
-    )
-    .then(response => response.json())
-    .then(data => {
-
-        title.innerText = data.title || "Film";
-
-        if(data.thumbnail_url){
-
-            image.src =
-                data.thumbnail_url
-                .replace("_200x150","_1280");
-
-        }
-
-    })
-    .catch(() => {
-        title.innerText = "Film";
-    });
-
-    /* CREATE VIMEO PLAYER ONLY WHEN NEEDED */
-
-    function loadPreview(){
-
-        if(loaded) return;
-
-        loaded = true;
-
-        iframe = document.createElement("iframe");
-
-        iframe.src =
-            `https://player.vimeo.com/video/${id}?` +
-            `muted=1&background=1&autoplay=1&loop=1&title=0&byline=0&portrait=0`;
-
-        iframe.allow = "autoplay; fullscreen";
-        iframe.setAttribute("loading","lazy");
-
-        video.appendChild(iframe);
-
-        iframe.onload = () => {
-
-            video.classList.add("previewing");
-
-            iframe.contentWindow.postMessage(
-                JSON.stringify({method:"play"}),
-                "*"
-            );
-
-        };
-
-    }
-
-    /* DESKTOP HOVER */
-
-    video.addEventListener("mouseenter", () => {
-
-        if(window.matchMedia("(hover:hover)").matches){
-
-            loadPreview();
-
-            if(iframe){
-
-                video.classList.add("previewing");
-
-                iframe.contentWindow.postMessage(
-                    JSON.stringify({method:"play"}),
-                    "*"
-                );
-
-            }
-
-        }
-
-    });
-
-    video.addEventListener("mouseleave", () => {
-
-        if(iframe){
-
-            iframe.contentWindow.postMessage(
-                JSON.stringify({method:"pause"}),
-                "*"
-            );
-
-            video.classList.remove("previewing");
-
-        }
-
-    });
-
-    /* CLICK → MODAL */
-
-    video.addEventListener("click", () => {
-
-        modal.classList.add("active");
-
-        document.body.style.overflow = "hidden";
-
-        modalFrame.src =
-            `https://player.vimeo.com/video/${id}?` +
-            `autoplay=1&muted=0&title=0&byline=0&portrait=0`;
-
-    });
-
-}
-
-/* CLOSE MODAL */
-
-function closeModal(){
-
-    modal.classList.remove("active");
-
-    modalFrame.src = "";
-
-    document.body.style.overflow = "";
-
-}
-
-closeBtn.addEventListener("click", closeModal);
-
-modal.addEventListener("click", (event) => {
-
-    if(event.target === modal){
-        closeModal();
-    }
-
-});
-
-document.addEventListener("keydown", (event) => {
-
-    if(event.key === "Escape"){
-        closeModal();
-    }
-
-});
-
-/* BUILD GRID */
-
-films.forEach(createCard);
-
-</script>
+</footer>
 
 </body>
+
 </html>
