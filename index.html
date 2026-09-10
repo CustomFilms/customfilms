@@ -1,67 +1,49 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Custom Films</title>
 
-<meta name="description" content="Custom Films — independent filmmaking and creative production based in Zürich, Switzerland.">
-
 <style>
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
-    background:#000;
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#000;
+    background:#050505;
     color:#fff;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     overflow-x:hidden;
-    position:relative;
 }
-
-/* BACKGROUND DOTS */
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
-
     pointer-events:none;
     z-index:0;
-
     opacity:.22;
-
     background-image:radial-gradient(
         rgba(255,255,255,.65) .7px,
         transparent .8px
     );
-
     background-size:22px 22px;
 }
-
-/* HEADER */
 
 header{
     position:relative;
     z-index:10;
-
     width:92%;
     max-width:1800px;
     height:145px;
     margin:auto;
-
     display:flex;
     justify-content:center;
     align-items:center;
@@ -71,178 +53,112 @@ header{
 
 .logo{
     display:block;
-
     width:320px;
     max-width:80%;
-
     height:auto;
+    position:absolute;
+    left:50%;
+    top:40px;
+    transform:translateX(-50%);
 }
 
 nav{
     display:flex;
     gap:40px;
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
 }
 
 nav a{
     color:#fff;
     text-decoration:none;
-
+    font-size:12px;
     letter-spacing:3px;
-    font-size:13px;
-
-    opacity:.65;
-
-    transition:opacity .25s ease;
+    transition:opacity .3s ease;
 }
 
-nav a:hover,
-nav a.active{
-    opacity:1;
+nav a:hover{
+    opacity:.5;
 }
-
-/* CLAIM */
 
 .claim{
     position:relative;
     z-index:1;
-
     width:92%;
     max-width:1800px;
-    margin:auto;
-
-    padding:30px 0 65px;
-
-    font-size:clamp(14px,1.4vw,22px);
-
-    letter-spacing:7px;
-    text-transform:uppercase;
-
+    margin:70px auto 45px;
+    font-size:11px;
+    letter-spacing:4px;
     opacity:.45;
 }
-
-/* GRID */
 
 .grid{
     position:relative;
     z-index:1;
-
     width:92%;
     max-width:1800px;
-    margin:auto;
-
-    padding-bottom:80px;
-
+    margin:0 auto 100px;
     display:grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(380px,1fr));
-
+    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
     gap:25px;
 }
 
-/* CARD */
-
 .card{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.video{
     position:relative;
-
     aspect-ratio:16/9;
-
     overflow:hidden;
-
-    cursor:pointer;
-
     background:#111;
+    cursor:pointer;
 }
 
-.video img{
-    position:absolute;
-    inset:0;
-
+.card img{
     width:100%;
     height:100%;
-
     object-fit:cover;
-
-    opacity:1;
-
-    transition:opacity .35s ease;
+    display:block;
+    transition:transform .7s ease,opacity .5s ease;
 }
 
-.video iframe{
+.card:hover img{
+    transform:scale(1.03);
+    opacity:.65;
+}
+
+.card iframe{
     position:absolute;
     inset:0;
-
     width:100%;
     height:100%;
-
-    border:none;
-
-    opacity:0;
-
+    border:0;
     pointer-events:none;
-
-    transition:opacity .35s ease;
 }
-
-.video.previewing iframe{
-    opacity:1;
-}
-
-.video.previewing img{
-    opacity:0;
-}
-
-/* TITLE */
-
-.title{
-    font-size:13px;
-    letter-spacing:2px;
-    opacity:.85;
-}
-
-/* FOOTER */
 
 footer{
     position:relative;
     z-index:1;
-
     width:92%;
     max-width:1800px;
     margin:auto;
-
     border-top:1px solid #222;
-
     padding:30px 0 50px;
-
     display:flex;
     justify-content:space-between;
-
     font-size:10px;
     letter-spacing:2px;
-
     opacity:.4;
 }
-
-/* MODAL */
 
 .modal{
     position:fixed;
     inset:0;
-
-    background:rgba(0,0,0,.92);
-
+    background:rgba(0,0,0,.94);
+    z-index:100;
     display:none;
-
     align-items:center;
     justify-content:center;
-
-    z-index:9999;
+    padding:30px;
 }
 
 .modal.active{
@@ -250,43 +166,28 @@ footer{
 }
 
 .modal-content{
-    width:80%;
-    max-width:1200px;
-
+    width:min(1400px,92vw);
     aspect-ratio:16/9;
+    position:relative;
 }
 
-.modal-content iframe{
+.modal iframe{
     width:100%;
     height:100%;
-
-    border:none;
+    border:0;
 }
 
 .close{
     position:absolute;
-
-    top:20px;
-    right:30px;
-
-    font-size:30px;
-    line-height:1;
-
+    top:-45px;
+    right:0;
+    color:#fff;
+    font-size:22px;
     cursor:pointer;
-
-    color:white;
-    opacity:.7;
-
-    transition:opacity .2s ease;
+    font-weight:300;
 }
 
-.close:hover{
-    opacity:1;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
+@media(max-width:700px){
 
     header{
         height:125px;
@@ -295,10 +196,12 @@ footer{
 
     .logo{
         width:260px;
+        top:28px;
     }
 
     nav{
         gap:25px;
+        bottom:0;
     }
 
     nav a{
@@ -306,64 +209,47 @@ footer{
     }
 
     .claim{
-        padding:20px 0 45px;
-
-        font-size:11px;
-        letter-spacing:4px;
-
-        line-height:1.8;
+        margin:50px auto 30px;
+        font-size:9px;
+        letter-spacing:3px;
     }
 
     .grid{
+        width:92%;
         grid-template-columns:1fr;
-        gap:28px;
+        gap:15px;
+        margin-bottom:70px;
     }
 
     footer{
-        flex-direction:column;
-        gap:15px;
+        padding:25px 0 35px;
+        font-size:8px;
+        letter-spacing:1.5px;
     }
 
-    .modal-content{
-        width:95%;
+    .modal{
+        padding:15px;
     }
 
+    .close{
+        top:-35px;
+    }
 }
-
 </style>
-
 </head>
 
 <body>
 
 <header>
 
-```
-<a href="./index.html">
-
-    <img
-        src="logo.png"
-        class="logo"
-        alt="Custom Films">
-
-</a>
-
-
-<nav>
-
-    <a
-        href="./index.html"
-        class="active">
-        FILMS
+    <a href="index.html">
+        <img src="logo.png" class="logo" alt="Custom Films">
     </a>
 
-    <a
-        href="./about.html">
-        ABOUT
-    </a>
-
-</nav>
-```
+    <nav>
+        <a href="index.html">FILMS</a>
+        <a href="about.html">ABOUT</a>
+    </nav>
 
 </header>
 
@@ -371,351 +257,122 @@ footer{
     FILMS, STORIES, PEOPLE
 </div>
 
-<div
-    id="grid"
-    class="grid">
-</div>
+<main class="grid" id="filmGrid"></main>
 
 <footer>
-
-```
-<span>
-    © CUSTOM FILMS
-</span>
-
-<span>
-    ZÜRICH / SWITZERLAND
-</span>
-```
-
+    <span>© CUSTOM FILMS</span>
+    <span>ZÜRICH / SWITZERLAND</span>
 </footer>
 
-<!-- MODAL -->
-
-<div
-    id="modal"
-    class="modal">
-
-```
-<div
-    class="close"
-    id="close">
-    ×
-</div>
-
-<div class="modal-content">
-
-    <iframe
-        id="modalFrame"
-        allow="autoplay; fullscreen"
-        allowfullscreen>
-    </iframe>
-
-</div>
-```
-
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div class="close" id="close">×</div>
+        <iframe
+            id="modalFrame"
+            src=""
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
 </div>
 
 <script>
 
 const films = [
-
     "875134288",
-    "1050757865",
-    "875132136",
-    "482721100",
-    "476001858",
-    "875542319",
-    "637911167",
-    "644845266",
-    "287788355",
-    "800771439",
-    "652153530",
-    "829526792",
-    "348184376",
-    "345945132",
+    "1198727288",
+    "1068371126",
+    "1068370967",
+    "1068370885",
+    "1068370812",
+    "1068370745",
+    "1068370675",
+    "1068370595",
+    "1068370524",
+    "1068370452",
+    "1068370378",
+    "1068370302",
+    "1068370228",
     "1198727288"
-
 ];
 
+const grid = document.getElementById("filmGrid");
+const modal = document.getElementById("modal");
+const modalFrame = document.getElementById("modalFrame");
+const close = document.getElementById("close");
 
-const grid =
-    document.getElementById("grid");
+films.forEach(id => {
 
-const modal =
-    document.getElementById("modal");
+    const card = document.createElement("div");
+    card.className = "card";
 
-const modalFrame =
-    document.getElementById("modalFrame");
+    const img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = "Custom Films";
+    img.src = `https://vumbnail.com/${id}.jpg`;
 
-const closeBtn =
-    document.getElementById("close");
-
-
-function createCard(id){
-
-    const card =
-        document.createElement("div");
-
-    card.className =
-        "card";
-
-
-    const video =
-        document.createElement("div");
-
-    video.className =
-        "video";
-
-
-    const image =
-        document.createElement("img");
-
-    image.alt =
-        "Custom Films video";
-
-    image.loading =
-        "lazy";
-
-    image.decoding =
-        "async";
-
-
-    const title =
-        document.createElement("div");
-
-    title.className =
-        "title";
-
-    title.innerText =
-        "Loading...";
-
-
-    video.appendChild(image);
-
-    card.appendChild(video);
-
-    card.appendChild(title);
-
-    grid.appendChild(card);
-
+    card.appendChild(img);
 
     let iframe = null;
-    let loaded = false;
 
+    card.addEventListener("mouseenter", () => {
 
-    /* THUMBNAIL + TITLE */
+        if(!iframe){
 
-    fetch(
-        `https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`
-    )
+            iframe = document.createElement("iframe");
 
-    .then(response =>
-        response.json()
-    )
+            iframe.src =
+                `https://player.vimeo.com/video/${id}?background=1&autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0`;
 
-    .then(data => {
+            iframe.allow = "autoplay; fullscreen";
+            iframe.setAttribute("frameborder","0");
 
-        title.innerText =
-            data.title || "Film";
-
-
-        if(data.thumbnail_url){
-
-            image.src =
-                data.thumbnail_url
-                .replace(
-                    "_200x150",
-                    "_1280"
-                );
-
+            card.appendChild(iframe);
         }
-
-    })
-
-    .catch(() => {
-
-        title.innerText =
-            "Film";
-
     });
 
+    card.addEventListener("mouseleave", () => {
 
-    /* VIMEO PLAYER */
-
-    function loadPreview(){
-
-        if(loaded)
-            return;
-
-        loaded = true;
-
-
-        iframe =
-            document.createElement("iframe");
-
-
-        iframe.src =
-            `https://player.vimeo.com/video/${id}?` +
-            `muted=1&background=1&autoplay=1&loop=1&` +
-            `title=0&byline=0&portrait=0`;
-
-
-        iframe.allow =
-            "autoplay; fullscreen";
-
-        iframe.loading =
-            "lazy";
-
-
-        video.appendChild(iframe);
-
-
-        iframe.onload = () => {
-
-            video.classList.add(
-                "previewing"
-            );
-
-        };
-
-    }
-
-
-    /* HOVER */
-
-    video.addEventListener(
-        "mouseenter",
-        () => {
-
-            if(
-                window.matchMedia(
-                    "(hover:hover)"
-                ).matches
-            ){
-
-                loadPreview();
-
-                video.classList.add(
-                    "previewing"
-                );
-
-            }
-
+        if(iframe){
+            iframe.remove();
+            iframe = null;
         }
-    );
+    });
 
+    card.addEventListener("click", () => {
 
-    video.addEventListener(
-        "mouseleave",
-        () => {
+        modal.classList.add("active");
 
-            if(iframe){
+        modalFrame.src =
+            `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0`;
+    });
 
-                iframe.contentWindow.postMessage(
-
-                    JSON.stringify({
-                        method:"pause"
-                    }),
-
-                    "*"
-
-                );
-
-                video.classList.remove(
-                    "previewing"
-                );
-
-            }
-
-        }
-    );
-
-
-    /* OPEN FILM */
-
-    video.addEventListener(
-        "click",
-        () => {
-
-            modal.classList.add(
-                "active"
-            );
-
-            document.body.style.overflow =
-                "hidden";
-
-
-            modalFrame.src =
-                `https://player.vimeo.com/video/${id}?` +
-                `autoplay=1&muted=0&title=0&` +
-                `byline=0&portrait=0`;
-
-        }
-    );
-
-}
-
+    grid.appendChild(card);
+});
 
 function closeModal(){
 
-    modal.classList.remove(
-        "active"
-    );
-
-    modalFrame.src =
-        "";
-
-    document.body.style.overflow =
-        "";
-
+    modal.classList.remove("active");
+    modalFrame.src = "";
 }
 
+close.addEventListener("click", closeModal);
 
-closeBtn.addEventListener(
-    "click",
-    closeModal
-);
+modal.addEventListener("click", e => {
 
-
-modal.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target === modal
-        ){
-
-            closeModal();
-
-        }
-
+    if(e.target === modal){
+        closeModal();
     }
-);
+});
 
+document.addEventListener("keydown", e => {
 
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key === "Escape"
-        ){
-
-            closeModal();
-
-        }
-
+    if(e.key === "Escape"){
+        closeModal();
     }
-);
-
-
-films.forEach(
-    createCard
-);
+});
 
 </script>
 
 </body>
-
 </html>
