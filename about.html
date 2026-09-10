@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,300 +13,348 @@
 
 <style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    background: #000;
+html{
+    background:#000;
 }
 
-body {
-    background: #000;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+body{
+    background:#000;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+/* SUBTLE BACKGROUND DOTS */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.18;
+
+    background-image:radial-gradient(
+        rgba(255,255,255,.7) .7px,
+        transparent .7px
+    );
+
+    background-size:22px 22px;
+    mask-image:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.8),
+        rgba(0,0,0,.15)
+    );
 }
 
 /* HEADER */
 
-header {
-    width: 92%;
-    max-width: 1800px;
-    margin: auto;
-    padding: 40px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 25px;
-    position: relative;
-    z-index: 10;
+header{
+    position:relative;
+    z-index:10;
+
+    width:92%;
+    max-width:1800px;
+    height:145px;
+    margin:auto;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:25px;
 }
 
-.logo {
-    width: 320px;
-    max-width: 80%;
+.logo{
+    display:block;
+    width:320px;
+    max-width:80%;
+    height:auto;
 }
 
-nav {
-    display: flex;
-    gap: 40px;
+nav{
+    display:flex;
+    gap:40px;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-size: 13px;
-    opacity: .65;
-    transition: opacity .3s ease;
+nav a{
+    color:#fff;
+    text-decoration:none;
+    letter-spacing:3px;
+    font-size:13px;
+    opacity:.65;
+    transition:opacity .25s ease;
 }
 
 nav a:hover,
-nav a.active {
-    opacity: 1;
+nav a.active{
+    opacity:1;
 }
 
 /* HERO */
 
-.hero {
-    min-height: 72vh;
-    width: 92%;
-    max-width: 1800px;
-    margin: auto;
+.hero{
+    position:relative;
+    z-index:1;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    min-height:72vh;
 
-    padding: 80px 0 100px;
+    width:92%;
+    max-width:1800px;
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    padding:80px 0 100px;
 }
 
-.kicker {
-    font-size: 12px;
-    letter-spacing: 4px;
-    opacity: .5;
-    margin-bottom: 28px;
+.kicker{
+    font-size:12px;
+    letter-spacing:4px;
+    opacity:.5;
+    margin-bottom:28px;
 }
 
-.hero h1 {
-    font-size: clamp(70px, 13vw, 220px);
-    line-height: .82;
-    font-weight: 400;
-    letter-spacing: -7px;
-    text-transform: uppercase;
-    max-width: 1500px;
+.hero h1{
+    font-size:clamp(65px,13vw,210px);
+    line-height:.82;
+    font-weight:400;
+    letter-spacing:-7px;
+    text-transform:uppercase;
+
+    max-width:1500px;
 }
 
-.hero h1 span {
-    display: block;
+.hero h1 span{
+    display:block;
 }
 
 /* INTRO */
 
-.intro {
-    width: 92%;
-    max-width: 1800px;
-    margin: auto;
+.intro{
+    position:relative;
+    z-index:1;
 
-    border-top: 1px solid #222;
+    width:92%;
+    max-width:1800px;
+    margin:auto;
 
-    padding: 80px 0 160px;
+    border-top:1px solid #222;
 
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 60px;
+    padding:80px 0 160px;
+
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:60px;
 }
 
-.intro-label {
-    font-size: 11px;
-    letter-spacing: 3px;
-    opacity: .45;
+.intro-label{
+    font-size:11px;
+    letter-spacing:3px;
+    opacity:.45;
 }
 
-.intro-text {
-    max-width: 900px;
+.intro-text{
+    max-width:900px;
 }
 
-.intro-text p {
-    font-size: clamp(28px, 3.5vw, 58px);
-    line-height: 1.08;
-    font-weight: 300;
-    letter-spacing: -1.5px;
+.intro-text p{
+    font-size:clamp(28px,3.5vw,58px);
+    line-height:1.08;
+    font-weight:300;
+    letter-spacing:-1.5px;
 }
 
 /* VIDEO */
 
-.video-section {
-    width: 92%;
-    max-width: 1800px;
-    margin: auto;
-    padding-bottom: 160px;
+.video-section{
+    position:relative;
+    z-index:1;
+
+    width:92%;
+    max-width:1800px;
+    margin:auto;
+
+    padding-bottom:160px;
 }
 
-.video-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: #111;
+.video-wrapper{
+    position:relative;
+
+    width:100%;
+    aspect-ratio:16/9;
+
+    overflow:hidden;
+    background:#111;
 }
 
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
+.video-wrapper iframe{
+    width:100%;
+    height:100%;
+    border:0;
 }
 
 /* CONTACT */
 
-.contact-section {
-    width: 92%;
-    max-width: 1800px;
-    margin: auto;
+.contact-section{
+    position:relative;
+    z-index:1;
 
-    border-top: 1px solid #222;
+    width:92%;
+    max-width:1800px;
+    margin:auto;
 
-    padding: 70px 0 120px;
+    border-top:1px solid #222;
 
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 60px;
+    padding:70px 0 120px;
+
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:60px;
 }
 
-.contact-label {
-    font-size: 11px;
-    letter-spacing: 3px;
-    opacity: .45;
+.contact-label{
+    font-size:11px;
+    letter-spacing:3px;
+    opacity:.45;
 }
 
-.contact-content {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
+.contact-content{
+    display:flex;
+    flex-direction:column;
+    gap:35px;
 }
 
-.contact-name {
-    font-size: clamp(35px, 5vw, 75px);
-    line-height: 1;
-    font-weight: 400;
-    letter-spacing: -2px;
+.contact-name{
+    font-size:clamp(35px,5vw,75px);
+    line-height:1;
+    font-weight:400;
+    letter-spacing:-2px;
 }
 
-.contact-role {
-    font-size: 13px;
-    letter-spacing: 2px;
-    opacity: .5;
-    margin-top: -20px;
+.contact-role{
+    font-size:13px;
+    letter-spacing:2px;
+    opacity:.5;
+    margin-top:-20px;
 }
 
-.contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
 }
 
-.contact-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    transition: opacity .3s ease;
+.contact-links a{
+    color:#fff;
+    text-decoration:none;
+    font-size:20px;
+    transition:opacity .25s ease;
 }
 
-.contact-links a:hover {
-    opacity: .5;
+.contact-links a:hover{
+    opacity:.5;
 }
 
-.location {
-    font-size: 14px;
-    line-height: 1.7;
-    opacity: .5;
+.location{
+    font-size:14px;
+    line-height:1.7;
+    opacity:.5;
 }
 
 /* FOOTER */
 
-footer {
-    width: 92%;
-    max-width: 1800px;
-    margin: auto;
+footer{
+    position:relative;
+    z-index:1;
 
-    border-top: 1px solid #222;
+    width:92%;
+    max-width:1800px;
+    margin:auto;
 
-    padding: 30px 0 50px;
+    border-top:1px solid #222;
 
-    display: flex;
-    justify-content: space-between;
+    padding:30px 0 50px;
 
-    font-size: 10px;
-    letter-spacing: 2px;
-    opacity: .4;
+    display:flex;
+    justify-content:space-between;
+
+    font-size:10px;
+    letter-spacing:2px;
+    opacity:.4;
 }
 
 /* MOBILE */
 
-@media (max-width: 768px) {
+@media(max-width:768px){
 
-    header {
-        padding: 28px 0;
-        gap: 20px;
+    header{
+        height:125px;
+        gap:20px;
     }
 
-    .logo {
-        width: 240px;
+    .logo{
+        width:260px;
     }
 
-    nav {
-        gap: 25px;
+    nav{
+        gap:25px;
     }
 
-    nav a {
-        font-size: 11px;
+    nav a{
+        font-size:11px;
     }
 
-    .hero {
-        min-height: 65vh;
-        padding: 60px 0 70px;
+    .hero{
+        min-height:65vh;
+        padding:60px 0 70px;
     }
 
-    .hero h1 {
-        font-size: clamp(58px, 18vw, 120px);
-        letter-spacing: -4px;
+    .hero h1{
+        font-size:clamp(55px,18vw,120px);
+        letter-spacing:-4px;
     }
 
     .intro,
-    .contact-section {
-        grid-template-columns: 1fr;
-        gap: 35px;
+    .contact-section{
+        grid-template-columns:1fr;
+        gap:35px;
     }
 
-    .intro {
-        padding: 55px 0 100px;
+    .intro{
+        padding:55px 0 100px;
     }
 
-    .intro-text p {
-        font-size: 30px;
-        line-height: 1.12;
+    .intro-text p{
+        font-size:30px;
+        line-height:1.12;
     }
 
-    .video-section {
-        padding-bottom: 100px;
+    .video-section{
+        padding-bottom:100px;
     }
 
-    .contact-section {
-        padding: 55px 0 90px;
+    .contact-section{
+        padding:55px 0 90px;
     }
 
-    .contact-name {
-        font-size: 48px;
+    .contact-name{
+        font-size:48px;
     }
 
-    footer {
-        flex-direction: column;
-        gap: 15px;
+    footer{
+        flex-direction:column;
+        gap:15px;
     }
+
 }
 
 </style>
@@ -331,93 +380,97 @@ footer {
 
 <main>
 
-```
 <section class="hero">
 
-    <div class="kicker">
-        CUSTOM FILMS — ZÜRICH
-    </div>
+```
+<div class="kicker">
+    CUSTOM FILMS — ZÜRICH
+</div>
 
-    <h1>
-        <span>Film.</span>
-        <span>Stories.</span>
-        <span>People.</span>
-    </h1>
+<h1>
+    <span>FILMS.</span>
+    <span>STORIES.</span>
+    <span>PEOPLE.</span>
+</h1>
+```
 
 </section>
-
 
 <section class="intro">
 
-    <div class="intro-label">
-        01 — ABOUT
-    </div>
+```
+<div class="intro-label">
+    01 — ABOUT
+</div>
 
-    <div class="intro-text">
+<div class="intro-text">
 
-        <p>
-            Custom Films is an independent filmmaking
-            and creative production studio based in Zürich.
-        </p>
+    <p>
+        Custom Films is an independent filmmaking
+        and creative production studio based in Zürich.
+    </p>
 
-    </div>
+</div>
+```
 
 </section>
-
 
 <section class="video-section">
 
-    <div class="video-wrapper">
+```
+<div class="video-wrapper">
 
-        <iframe
-            src="https://player.vimeo.com/video/1198727288?background=1&autoplay=1&loop=1&muted=1"
-            allow="autoplay; fullscreen"
-            allowfullscreen>
-        </iframe>
+    <iframe
+        src="https://player.vimeo.com/video/1198727288?background=1&autoplay=1&loop=1&muted=1"
+        loading="lazy"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+    </iframe>
 
-    </div>
+</div>
+```
 
 </section>
-
 
 <section class="contact-section">
 
-    <div class="contact-label">
-        02 — CONTACT
+```
+<div class="contact-label">
+    02 — CONTACT
+</div>
+
+<div class="contact-content">
+
+    <div class="contact-name">
+        Marco Sahli
     </div>
 
-    <div class="contact-content">
+    <div class="contact-role">
+        FILMMAKER / CREATIVE PRODUCER
+    </div>
 
-        <div class="contact-name">
-            Marco Sahli
-        </div>
+    <div class="contact-links">
 
-        <div class="contact-role">
-            FILMMAKER / CREATIVE PRODUCER
-        </div>
+        <a href="mailto:info@customfilms.ch">
+            info@customfilms.ch
+        </a>
 
-        <div class="contact-links">
-
-            <a href="mailto:info@customfilms.ch">
-                info@customfilms.ch
-            </a>
-
-            <a href="tel:+41763422307">
-                +41 76 342 23 07
-            </a>
-
-        </div>
-
-        <div class="location">
-            Florastrasse 18<br>
-            8008 Zürich<br>
-            Switzerland
-        </div>
+        <a href="tel:+41763422307">
+            +41 76 342 23 07
+        </a>
 
     </div>
+
+    <div class="location">
+        Florastrasse 18<br>
+        8008 Zürich<br>
+        Switzerland
+    </div>
+
+</div>
+```
 
 </section>
-```
 
 </main>
 
