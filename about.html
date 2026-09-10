@@ -36,27 +36,21 @@ body::before{
     content:"";
     position:fixed;
     inset:0;
+
     pointer-events:none;
     z-index:0;
-    opacity:.16;
+
+    opacity:.22;
 
     background-image:radial-gradient(
-        rgba(255,255,255,.7) .7px,
-        transparent .7px
+        rgba(255,255,255,.65) .7px,
+        transparent .8px
     );
 
     background-size:22px 22px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        rgba(0,0,0,.9),
-        rgba(0,0,0,.2)
-    );
 }
 
-/* HEADER
-   IDENTICAL TO FILMS PAGE
-*/
+/* HEADER */
 
 header{
     position:relative;
@@ -76,8 +70,10 @@ header{
 
 .logo{
     display:block;
+
     width:320px;
     max-width:80%;
+
     height:auto;
 }
 
@@ -89,9 +85,12 @@ nav{
 nav a{
     color:#fff;
     text-decoration:none;
+
     letter-spacing:3px;
     font-size:13px;
+
     opacity:.65;
+
     transition:opacity .25s ease;
 }
 
@@ -100,7 +99,7 @@ nav a.active{
     opacity:1;
 }
 
-/* ABOUT INTRO */
+/* HERO */
 
 .about-intro{
     position:relative;
@@ -120,9 +119,11 @@ nav a.active{
 
 .about-intro h1{
     font-size:clamp(60px,11vw,180px);
+
     line-height:.88;
 
     font-weight:400;
+
     letter-spacing:-6px;
 
     max-width:1600px;
@@ -132,6 +133,7 @@ nav a.active{
     display:block;
 
     font-size:clamp(14px,1.3vw,20px);
+
     letter-spacing:6px;
 
     opacity:.45;
@@ -159,6 +161,7 @@ nav a.active{
 
     display:grid;
     grid-template-columns:1fr 2fr;
+
     gap:60px;
 }
 
@@ -174,9 +177,11 @@ nav a.active{
 
 .statement-text p{
     font-size:clamp(30px,4vw,65px);
+
     line-height:1.05;
 
     font-weight:300;
+
     letter-spacing:-2px;
 }
 
@@ -198,6 +203,7 @@ nav a.active{
     aspect-ratio:16/9;
 
     overflow:hidden;
+
     background:#111;
 
     position:relative;
@@ -206,6 +212,7 @@ nav a.active{
 .video iframe{
     width:100%;
     height:100%;
+
     border:0;
 }
 
@@ -224,57 +231,77 @@ nav a.active{
     padding:80px 0 140px;
 
     display:grid;
+
     grid-template-columns:1fr 2fr;
+
     gap:60px;
 }
 
 .personal-content{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
+    max-width:900px;
 }
 
+/* NAME */
+
 .name{
-    font-size:clamp(35px,5vw,75px);
+    font-size:clamp(45px,6vw,90px);
+
     line-height:.95;
-    letter-spacing:-3px;
+
+    letter-spacing:-4px;
+
     font-weight:400;
 }
 
 .role{
-    font-size:12px;
-    letter-spacing:2px;
-    opacity:.45;
+    margin-top:22px;
 
-    margin-top:20px;
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    opacity:.4;
 }
 
+/* CONTACT */
+
 .contact{
+    margin-top:65px;
+
     display:flex;
     flex-direction:column;
+
     gap:8px;
 }
 
 .contact a{
     color:#fff;
+
     text-decoration:none;
 
-    font-size:18px;
+    font-size:14px;
+
+    letter-spacing:.5px;
+
+    opacity:.45;
 
     transition:opacity .25s ease;
 }
 
 .contact a:hover{
-    opacity:.45;
+    opacity:.9;
 }
 
 .location{
-    margin-top:25px;
+    margin-top:22px;
 
-    font-size:13px;
+    font-size:12px;
+
     line-height:1.7;
 
-    opacity:.45;
+    letter-spacing:.5px;
+
+    opacity:.35;
 }
 
 /* FOOTER */
@@ -323,22 +350,27 @@ footer{
 
     .about-intro{
         min-height:68vh;
+
         padding:60px 0 80px;
     }
 
     .about-intro h1{
         font-size:clamp(52px,16vw,110px);
+
         letter-spacing:-4px;
     }
 
     .about-intro h1 .small{
         font-size:10px;
+
         letter-spacing:4px;
+
         margin-bottom:30px;
     }
 
     .statement{
         grid-template-columns:1fr;
+
         gap:35px;
 
         padding:55px 0 100px;
@@ -346,6 +378,7 @@ footer{
 
     .statement-text p{
         font-size:32px;
+
         letter-spacing:-1px;
     }
 
@@ -355,22 +388,23 @@ footer{
 
     .personal{
         grid-template-columns:1fr;
+
         gap:35px;
 
         padding:55px 0 90px;
     }
 
-    .personal-content{
-        grid-template-columns:1fr;
-        gap:55px;
+    .name{
+        font-size:52px;
     }
 
-    .name{
-        font-size:50px;
+    .contact{
+        margin-top:50px;
     }
 
     footer{
         flex-direction:column;
+
         gap:15px;
     }
 
@@ -386,11 +420,14 @@ footer{
 
 ```
 <a href="./index.html">
+
     <img
         src="logo.png"
         class="logo"
         alt="Custom Films">
+
 </a>
+
 
 <nav>
 
@@ -398,7 +435,9 @@ footer{
         FILMS
     </a>
 
-    <a href="./about.html" class="active">
+    <a
+        href="./about.html"
+        class="active">
         ABOUT
     </a>
 
@@ -408,8 +447,6 @@ footer{
 </header>
 
 <main>
-
-<!-- INTRO -->
 
 <section class="about-intro">
 
@@ -437,8 +474,6 @@ footer{
 
 </section>
 
-<!-- STATEMENT -->
-
 <section class="statement">
 
 ```
@@ -459,8 +494,6 @@ footer{
 
 </section>
 
-<!-- VIDEO -->
-
 <section class="video-section">
 
 ```
@@ -478,8 +511,6 @@ footer{
 
 </section>
 
-<!-- PERSONAL / CONTACT -->
-
 <section class="personal">
 
 ```
@@ -490,18 +521,13 @@ footer{
 
 <div class="personal-content">
 
+    <div class="name">
+        Marco<br>
+        Sahli
+    </div>
 
-    <div>
-
-        <div class="name">
-            Marco<br>
-            Sahli
-        </div>
-
-        <div class="role">
-            FILMMAKER / CREATIVE PRODUCER
-        </div>
-
+    <div class="role">
+        FILMMAKER / CREATIVE PRODUCER
     </div>
 
 
@@ -516,15 +542,12 @@ footer{
         </a>
 
         <div class="location">
-
             Florastrasse 18<br>
             8008 Zürich<br>
             Switzerland
-
         </div>
 
     </div>
-
 
 </div>
 ```
