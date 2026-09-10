@@ -28,6 +28,7 @@ body{
     color:#fff;
     font-family:Arial, Helvetica, sans-serif;
     overflow-x:hidden;
+    position:relative;
 }
 
 /* BACKGROUND DOTS */
@@ -36,22 +37,18 @@ body::before{
     content:"";
     position:fixed;
     inset:0;
+
     pointer-events:none;
     z-index:0;
-    opacity:.16;
+
+    opacity:.22;
 
     background-image:radial-gradient(
-        rgba(255,255,255,.7) .7px,
-        transparent .7px
+        rgba(255,255,255,.65) .7px,
+        transparent .8px
     );
 
     background-size:22px 22px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        rgba(0,0,0,.9),
-        rgba(0,0,0,.2)
-    );
 }
 
 /* HEADER */
@@ -74,8 +71,10 @@ header{
 
 .logo{
     display:block;
+
     width:320px;
     max-width:80%;
+
     height:auto;
 }
 
@@ -87,6 +86,7 @@ nav{
 nav a{
     color:#fff;
     text-decoration:none;
+
     letter-spacing:3px;
     font-size:13px;
 
@@ -113,14 +113,14 @@ nav a.active{
     padding:30px 0 65px;
 
     font-size:clamp(14px,1.4vw,22px);
-    letter-spacing:7px;
 
+    letter-spacing:7px;
     text-transform:uppercase;
 
     opacity:.45;
 }
 
-/* FILM GRID */
+/* GRID */
 
 .grid{
     position:relative;
@@ -212,13 +212,21 @@ footer{
     position:relative;
     z-index:1;
 
-    text-align:center;
+    width:92%;
+    max-width:1800px;
+    margin:auto;
 
-    padding:50px;
+    border-top:1px solid #222;
 
-    font-size:12px;
+    padding:30px 0 50px;
 
-    color:#777;
+    display:flex;
+    justify-content:space-between;
+
+    font-size:10px;
+    letter-spacing:2px;
+
+    opacity:.4;
 }
 
 /* MODAL */
@@ -267,7 +275,6 @@ footer{
     cursor:pointer;
 
     color:white;
-
     opacity:.7;
 
     transition:opacity .2s ease;
@@ -302,7 +309,6 @@ footer{
         padding:20px 0 45px;
 
         font-size:11px;
-
         letter-spacing:4px;
 
         line-height:1.8;
@@ -313,12 +319,13 @@ footer{
         gap:28px;
     }
 
-    .modal-content{
-        width:95%;
+    footer{
+        flex-direction:column;
+        gap:15px;
     }
 
-    footer{
-        padding:40px 20px;
+    .modal-content{
+        width:95%;
     }
 
 }
@@ -360,13 +367,9 @@ footer{
 
 </header>
 
-<!-- CLAIM -->
-
 <div class="claim">
     FILMS, STORIES, PEOPLE
 </div>
-
-<!-- FILMS -->
 
 <div
     id="grid"
@@ -374,7 +377,17 @@ footer{
 </div>
 
 <footer>
-    © Custom Films
+
+```
+<span>
+    © CUSTOM FILMS
+</span>
+
+<span>
+    ZÜRICH / SWITZERLAND
+</span>
+```
+
 </footer>
 
 <!-- MODAL -->
@@ -438,20 +451,20 @@ const closeBtn =
     document.getElementById("close");
 
 
-/* CREATE CARD */
-
 function createCard(id){
 
     const card =
         document.createElement("div");
 
-    card.className = "card";
+    card.className =
+        "card";
 
 
     const video =
         document.createElement("div");
 
-    video.className = "video";
+    video.className =
+        "video";
 
 
     const image =
@@ -487,17 +500,18 @@ function createCard(id){
 
 
     let iframe = null;
-
     let loaded = false;
 
 
-    /* LOAD THUMBNAIL + TITLE */
+    /* THUMBNAIL + TITLE */
 
     fetch(
         `https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}`
     )
 
-    .then(response => response.json())
+    .then(response =>
+        response.json()
+    )
 
     .then(data => {
 
@@ -526,13 +540,12 @@ function createCard(id){
     });
 
 
-    /* LOAD PLAYER ONLY WHEN NEEDED */
+    /* VIMEO PLAYER */
 
     function loadPreview(){
 
         if(loaded)
             return;
-
 
         loaded = true;
 
@@ -550,7 +563,6 @@ function createCard(id){
         iframe.allow =
             "autoplay; fullscreen";
 
-
         iframe.loading =
             "lazy";
 
@@ -564,23 +576,12 @@ function createCard(id){
                 "previewing"
             );
 
-
-            iframe.contentWindow.postMessage(
-
-                JSON.stringify({
-                    method:"play"
-                }),
-
-                "*"
-
-            );
-
         };
 
     }
 
 
-    /* DESKTOP HOVER */
+    /* HOVER */
 
     video.addEventListener(
         "mouseenter",
@@ -630,7 +631,7 @@ function createCard(id){
     );
 
 
-    /* CLICK → MODAL */
+    /* OPEN FILM */
 
     video.addEventListener(
         "click",
@@ -639,7 +640,6 @@ function createCard(id){
             modal.classList.add(
                 "active"
             );
-
 
             document.body.style.overflow =
                 "hidden";
@@ -655,8 +655,6 @@ function createCard(id){
 
 }
 
-
-/* CLOSE MODAL */
 
 function closeModal(){
 
@@ -710,8 +708,6 @@ document.addEventListener(
     }
 );
 
-
-/* BUILD FILMS */
 
 films.forEach(
     createCard
