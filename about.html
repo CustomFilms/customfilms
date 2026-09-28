@@ -241,7 +241,13 @@ nav a.active{
     max-width:900px;
 }
 
-/* NAME */
+/* NAME + PHOTO */
+
+.name-row{
+    display:flex;
+    align-items:center;
+    gap:45px;
+}
 
 .name{
     font-size:clamp(45px,6vw,90px);
@@ -252,6 +258,17 @@ nav a.active{
 
     font-weight:400;
 }
+
+.portrait{
+    width:120px;
+    height:120px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+/* ROLE */
 
 .role{
     margin-top:22px;
@@ -394,8 +411,17 @@ footer{
         padding:55px 0 90px;
     }
 
+    .name-row{
+        gap:25px;
+    }
+
     .name{
         font-size:52px;
+    }
+
+    .portrait{
+        width:80px;
+        height:80px;
     }
 
     .contact{
@@ -418,7 +444,6 @@ footer{
 
 <header>
 
-```
 <a href="./index.html">
 
     <img
@@ -442,7 +467,6 @@ footer{
     </a>
 
 </nav>
-```
 
 </header>
 
@@ -450,7 +474,6 @@ footer{
 
 <section class="about-intro">
 
-```
 <h1>
 
     <span class="small">
@@ -470,13 +493,11 @@ footer{
     </span>
 
 </h1>
-```
 
 </section>
 
 <section class="statement">
 
-```
 <div class="label">
     01 — WHAT WE DO
 </div>
@@ -490,13 +511,11 @@ footer{
     </p>
 
 </div>
-```
 
 </section>
 
 <section class="video-section">
 
-```
 <div class="video">
 
     <iframe
@@ -507,13 +526,11 @@ footer{
     </iframe>
 
 </div>
-```
 
 </section>
 
 <section class="personal">
 
-```
 <div class="label">
     02 — CUSTOM FILMS
 </div>
@@ -521,9 +538,18 @@ footer{
 
 <div class="personal-content">
 
-    <div class="name">
-        Marco<br>
-        Sahli
+    <div class="name-row">
+
+        <div class="name">
+            Marco<br>
+            Sahli
+        </div>
+
+        <img
+            src="marco.jpg"
+            alt="Marco Sahli"
+            class="portrait">
+
     </div>
 
     <div class="role">
@@ -550,7 +576,6 @@ footer{
     </div>
 
 </div>
-```
 
 </section>
 
@@ -558,7 +583,6 @@ footer{
 
 <footer>
 
-```
 <span>
     © CUSTOM FILMS
 </span>
@@ -566,7 +590,6 @@ footer{
 <span>
     ZÜRICH / SWITZERLAND
 </span>
-```
 
 </footer>
 
